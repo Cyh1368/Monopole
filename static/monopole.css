@@ -13,7 +13,7 @@ h1 {
 h2 {
     font-size: 30px;
     font-family: Verdana, sans-serif;
-    text-align: left;
+    text-align: center;
     display: block;
     font-weight: 700;
     color: white;
@@ -103,8 +103,18 @@ nav a {
 }
 
 .bodyMessege{
-    padding: 0 20px;
+    padding: 20px 20px;
     height: 100%;
+    margin: 20px 0;
+}
+
+.singleContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%; 
 }
 
 .leftDiv{
@@ -116,18 +126,31 @@ nav a {
     height: 100%; 
     /* 100% of .bodyMessege */
     float: left;
+    background: radial-gradient(#555, #252525);
+    border-radius: 10px;
 }
 
-#threedivContainer {
+.threedivContainer {
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    /* border: 3px solid cyan; */
+    padding: 0;
+    margin: 0;
+}
+
+.threediv:nth-child(2){
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
 }
 
 .threediv{
-    border: 2px solid red;
-    width: 10%;
+    flex-basis: 0;
+    flex-grow: 1;
     height: 100%;
+    padding: 0 20px;
+    margin: 0;
 }
 
 .rightDiv{

@@ -27,6 +27,18 @@ app.get('/monopole', function(request, response) {
     response.sendFile(path.join(__dirname + '/monopole.html'));
 });
 
+app.get('/monopole/login', function(request, response) {
+    response.sendFile(path.join(__dirname + '/login.html'));
+});
+
+app.get('/monopole/signup', function(request, response) {
+    response.sendFile(path.join(__dirname + '/signup.html'));
+});
+
+app.get('/monopole/ask', function(request, response) {
+    response.sendFile(path.join(__dirname + '/ask.html'));
+});
+
 app.listen(8080);
 
 // http.createServer(function (req, res) {
