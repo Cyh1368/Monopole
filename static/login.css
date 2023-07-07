@@ -44,6 +44,11 @@ a {
     text-decoration: none;
 }
 
+#userStatus{
+    color: #40a8f7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 nav a {
     color: white;
 }

@@ -4,12 +4,47 @@ const crypto = require('crypto');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const store = require('store');
+var localStorage = require('localStorage');
+var cookies = require("cookie-parser");
 // var formidable = require('formidable');
 var fs = require('fs');
+const { log } = require('console');
 const app = express();
 const authExpire = 2 * 60; // Two minutes for developement stage, in SECONDS
 const cookieLength = 10 * 60 * 1000; // 10 min, in milliseconds
 const cryptoKey = "kA94fp@ki/2[]`jr-=`]"; // Should be kept secret in some way
+
+async function authLoginToken(token){
+	// Input: login token, both stored in the client cookie and database
+	// Output: Matching user name, null otherwise
+	var ret = undefined;
+	let sqlPromise = new Promise(function(resolve) {
+		connection.query('SELECT Username FROM logintb WHERE loginToken = ?', [token], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// console.log("AUTHTOKEN result: ", results);
+			var string=JSON.stringify(results);
+			var json =  JSON.parse(string);
+			// console.log("AUTH json: ", json)
+			if (json[0]!=undefined) ret = json[0].Username;
+			resolve(ret);
+			// console.log("RET: ", ret);
+		});
+	});
+	let promiseValue = await sqlPromise;
+	// console.log("Promise value: ", promiseValue);
+	return promiseValue;
+}
+
+
+// Store a random key both in the database and client side (session). 
+// Upon login attempt, check if session token matches a user. Then check if user is logged in.
+var generate_key = function() {
+    // 16 bytes is likely to be more than enough,
+    // but you may tweak it to your needs
+    return crypto.randomBytes(20).toString('base64');
+};
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -24,36 +59,80 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+app.use(cookies());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname + '/home.html'));
+	// console.log("Return of auth: ", authLoginToken(request.cookies.clientToken));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/home.html'))
+		// console.log("IIFE log: ", authResult);
+	})()
+
+	// console.log(authLoginToken("blah"));
+	// console.log(request.cookies);
+    // response.sendFile(path.join(__dirname + '/home.html'));
 });
 
 app.get('/pdfs', function(request, response) {
-    response.sendFile(path.join(__dirname + '/pdfs.html'));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/pdfs.html'))
+	})()
+	// console.log("IIFE log: ", authResult);
 });
 
 app.get('/monopole', function(request, response) {
-    response.sendFile(path.join(__dirname + '/monopole.html'));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/monopole.html'))
+	})()
 });
 
 app.get('/monopoleLogin', function(request, response) {
-	console.log(__dirname);
-    response.sendFile(path.join(__dirname + '/login.html'));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/login.html'))
+	})()
 });
 
 app.get('/monopoleSignup', function(request, response) {
-    response.sendFile(path.join(__dirname + '/signup.html'));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/signup.html'))
+	})()
 });
 
 app.get('/monopoleAsk', function(request, response) {
-    response.sendFile(path.join(__dirname + '/ask.html'));
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+		response.sendFile(path.join(__dirname + '/ask.html'))
+	})()
 });
 
 app.post('/auth', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+	})()
+
     console.log("Authentication Start")
 	// Capture the input fields
     // console.log(request)
@@ -85,6 +164,16 @@ app.post('/auth', function(request, response) {
 				connection.query('UPDATE logintb SET expireTime = ? WHERE Username = ?', [expire, username], function(error, results, fields){
 					if (error) throw error;
 				});
+
+				var loginToken = generate_key()
+				console.log("Login token: ", loginToken);
+				connection.query('UPDATE logintb SET loginToken = ? WHERE Username = ?', [loginToken, username], function(error, results, fields){
+					if (error) throw error;
+				});
+
+				// // Store token client-side
+				// var client = {clientToken: loginToken};
+				// localStorage.setItem('clientToken', JSON.stringify(client));
 				
 				// // Store username in cookie, then check the expire time in mysql
 				// var d = new Date();
@@ -92,7 +181,7 @@ app.post('/auth', function(request, response) {
 				// let cookieExpires = "expires="+d.toUTCString();
 				// document.cookie = "username" + "=" + username + ";" + cookieExpires + ";path=/";
 
-
+				response.cookie("clientToken", loginToken);
 				response.redirect('/monopole');
                 console.log("Directed home.");
                 
@@ -110,6 +199,12 @@ app.post('/auth', function(request, response) {
 
 // http://localhost:3000/auth
 app.post('/register', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response.cookie("clientUsername", authResult);
+	})()
+
     console.log("Registration Start")
 	// Capture the input fields
 	let username = request.body.username;

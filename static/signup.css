@@ -27,6 +27,10 @@ h3 {
     color: white;
 }
 
+#userStatus{
+    color: #40a8f7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 nav {
     position: relative;
