@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Ask</title>
+        <link href="ask.css" rel="stylesheet" type="text/css">
+
+        <nav id="navbar">
+            <ul class="menu">
+                <h2 id="nav-title"><a href="/monopole">CYH:Monopole</a></h2>
+                <li class="item"><a href="/">CYH</a></li>
+                <li class="item"><a href="/monopoleAbout">About</a></li>
+                <li class="item"><a href="/monopoleAsk">Ask</a></li>
+                <li class="item"><a href="/monopoleLogin">Login / Signup</a></li>
+                <li class="item" id="userStatus">Logged Out</li>
+            </ul>
+        </nav>
+	</head>
+	<body>
+        <div class="bodyMessege">
+        <h1>Ask a Question</h1>
+            <h3 id="loginCheck">Please log in first.</h3>
+            <div class="askQuestion">
+                <form action="/askSubmit" method="post">
+                    <input type="text" name="title" placeholder="Title" id="title" required>
+                    <textarea type="text" autocomplete="off" name="main" placeholder="Describe your question clearly" id="main" required></textarea>
+                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                    <span class="anchor">Select Category</span>
+                    <ul class="items">
+                        <li><input type="checkbox" name="mech" value="1"/>Mechanics </li>
+                        <li><input type="checkbox" name="em" value="1"/>Electromagnetics</li>
+                        <li><input type="checkbox" name="thermo" value="1"/>Thermodynamcis </li>
+                        <li><input type="checkbox" name="sr" value="1"/>Special Relativity </li>
+                        <li><input type="checkbox" name="gr" value="1"/>General Relativity </li>
+                        <li><input type="checkbox" name="modern" value="1"/>Modern Physics </li>
+                    </ul>
+                    </div>
+
+                    <input type="submit" value="Submit Question">
+                </form>
+            </div>
+        </div>
+
+    <script src="ask.js"></script>
+	</body>
+</html>
+
+<!-- <input type="text" name="title" placeholder="Title" id="title" required>
+<textarea type="text" autocomplete="off" name="main" placeholder="Describe your question clearly" id="main" required></textarea>
+
+<input type="checkbox" id="mech" name="mech" value="mech">
+<label for="mech"> Mechanics</label><br>
+<input type="checkbox" id="em" name="em" value="em">
+<label for="em"> Electromagnetics</label><br>
+<input type="checkbox" id="thermo" name="thermo" value="thermo">
+<label for="thermo"> Thermodynamics</label><br>
+<input type="checkbox" id="rel" name="rel" value="rel">
+<label for="rel"> Relativity</label><br>
+<input type="checkbox" id="modern" name="modern" value="modern">
+<label for="modern"> Modern Physics</label>
+
+<input type="submit" value="Submit Question"> -->

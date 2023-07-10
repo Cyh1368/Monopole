@@ -7,6 +7,16 @@ function getCookie(name) {
 serverUsername = getCookie("clientUsername");
 if (serverUsername=="undefined"){
     document.getElementById("userStatus").innerHTML = "<i>Logged Out</i>";
+    document.getElementById("loginCheck").innerHTML = "Please log in first.";
 } else {
     document.getElementById("userStatus").innerHTML = serverUsername;
+    document.getElementById("loginCheck").innerHTML = "Logged in as <i>" + serverUsername + "</i>";
+}
+
+var checkList = document.getElementById('list1');
+checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+  if (checkList.classList.contains('visible'))
+    checkList.classList.remove('visible');
+  else
+    checkList.classList.add('visible');
 }

@@ -18,16 +18,18 @@ const cryptoKey = "kA94fp@ki/2[]`jr-=`]"; // Should be kept secret in some way
 async function authLoginToken(token){
 	// Input: login token, both stored in the client cookie and database
 	// Output: Matching user name, null otherwise
-	var ret = undefined;
+	var ret = {UserID: undefined, Username: undefined};
 	let sqlPromise = new Promise(function(resolve) {
-		connection.query('SELECT Username FROM logintb WHERE loginToken = ?', [token], function(error, results, fields) {
+		connection.query('SELECT UserID, Username FROM logintb WHERE loginToken = ?', [token], function(error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// console.log("AUTHTOKEN result: ", results);
 			var string=JSON.stringify(results);
 			var json =  JSON.parse(string);
-			// console.log("AUTH json: ", json)
-			if (json[0]!=undefined) ret = json[0].Username;
+			console.log("AUTH json: ", json)
+			if (json[0]!=undefined) ret.UserID = json[0].UserID;
+			if (json[0]!=undefined) ret.Username = json[0].Username;
+			
 			resolve(ret);
 			// console.log("RET: ", ret);
 		});
@@ -36,6 +38,28 @@ async function authLoginToken(token){
 	// console.log("Promise value: ", promiseValue);
 	return promiseValue;
 }
+
+
+function setResponseCookies(res, jsonData){
+	let now = new Date();
+	let time = now.getTime();
+	let expireTime = time + cookieLength;
+	now.setTime(expireTime);
+	res.cookie('clientUserID', jsonData.UserID, {
+		expires: now, // There's maybe a bug here because there's language-dependent result here like 台北標準時間
+		secure: true,
+		httpOnly: false, // As of 20230710 client-side js can't access cookie if set to true, making it less secure
+		sameSite: 'lax'
+	});
+	res.cookie('clientUsername', jsonData.Username, {
+		expires: now, // There's maybe a bug here because there's language-dependent result here like 台北標準時間
+		secure: true,
+		httpOnly: false, // As of 20230710 client-side js can't access cookie if set to true, making it less secure
+		sameSite: 'lax'
+	});
+	return res;
+}
+
 
 
 // Store a random key both in the database and client side (session). 
@@ -66,11 +90,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(request, response) {
+	response.cookie("clientToken", "0");
 	// console.log("Return of auth: ", authLoginToken(request.cookies.clientToken));
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/home.html'))
 		// console.log("IIFE log: ", authResult);
 	})()
@@ -84,7 +109,7 @@ app.get('/pdfs', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/pdfs.html'))
 	})()
 	// console.log("IIFE log: ", authResult);
@@ -94,7 +119,7 @@ app.get('/monopole', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/monopole.html'))
 	})()
 });
@@ -103,7 +128,7 @@ app.get('/monopoleLogin', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/login.html'))
 	})()
 });
@@ -112,7 +137,7 @@ app.get('/monopoleSignup', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/signup.html'))
 	})()
 });
@@ -121,7 +146,7 @@ app.get('/monopoleAsk', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/ask.html'))
 	})()
 });
@@ -130,7 +155,7 @@ app.post('/auth', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 	})()
 
     console.log("Authentication Start")
@@ -180,8 +205,21 @@ app.post('/auth', function(request, response) {
 				// d.setTime(d.getTime() + (cookieLength));
 				// let cookieExpires = "expires="+d.toUTCString();
 				// document.cookie = "username" + "=" + username + ";" + cookieExpires + ";path=/";
+				
 
-				response.cookie("clientToken", loginToken);
+				// Old method
+				// response.cookie('clientToken', loginToken);
+
+				let now = new Date();
+				let time = now.getTime();
+				let expireTime = time + cookieLength;
+				now.setTime(expireTime);
+				response.cookie('clientToken', loginToken, {
+					expires: now, // There's maybe a bug here because there's language-dependent result here like 台北標準時間
+					secure: true,
+					httpOnly: true, // So that client can't see the cookie
+					sameSite: 'lax'
+				});
 				response.redirect('/monopole');
                 console.log("Directed home.");
                 
@@ -202,7 +240,7 @@ app.post('/register', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
-		response.cookie("clientUsername", authResult);
+		response = setResponseCookies(response, authResult);
 	})()
 
     console.log("Registration Start")
@@ -230,7 +268,7 @@ app.post('/register', function(request, response) {
 				console.log("Result is", results)
 				if (results.serverStatus==2) {
 					response.send("Registration completed! <a href='/monopoleLogin'>Login</a> here." )
-					
+					response.end();
 				} else {
 					response.send('Registration somehow failed. It has something to do with the server though, not your fault.');
 					response.end();
@@ -244,6 +282,58 @@ app.post('/register', function(request, response) {
 });
 
 app.listen(8080);
+
+app.post("/askSubmit", function(request, response){
+	let authResult, username="not checked", userid="not checked";
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		username = authResult.Username;
+		userid = authResult.UserID;
+
+		console.log(username, userid)
+		if (username=="undefined" || userid=="undefined" || !username || !userid){
+			console.log("branch A");
+			response.send("You must log in before asking a question. <a href='/monopoleLogin'>Login</a> here.");
+			response.end();
+		} else {
+			let body = request.body;
+			console.log(body); // { title: 'ewh', main: 'wehw', mech: '1', sr: '1' }
+			
+			// Fixing time overflow
+			var current = Math.floor(Date.now() / 1000) % 2147483647; // Storing the "seconds"
+			// To prevent overflow, I take the modulus, though this may have a bug of 2147483647s period.
+
+			connection.query('INSERT INTO questb (UserID, Username, Title, Main, Categories, AskTime) VALUES (?, ?, ?, ?, ?, ?)', [userid, username, body.title, body.main, "category", current], function(error, results, fields){
+				if (error) throw error;
+				response.send("Question submitted. Return <a href='/monopole'>Home</a>.")
+				response.end();
+			});
+		}
+	})()
+
+	
+	
+
+	// var sql = 'INSERT INTO questb (Username, Passwd) VALUES ("' + username + '", "' + hmacPassword + '");';
+	// // Execute SQL query that'll select the account from the database based on the specified username and password
+	// connection.query(sql, function(error, results, fields) {
+	// 	// If there is an issue with the query, output the error
+	// 	if (error){
+	// 		// console.log("ERROR in register()");
+	// 		throw error;
+	// 	} 
+	// 	console.log("Result is", results)
+	// 	if (results.serverStatus==2) {
+	// 		response.send("Question submitted! Return <a href='/'>home</a>." )
+	// 		response.end();
+	// 	} else {
+	// 		response.send("Question submission failed. It has something to do with the server though, not your fault. Return <a href='/';>home</a>.");
+	// 		response.end();
+	// 	}
+	// });
+	
+})
 
 // http.createServer(function (req, res) {
 //   if (req.url == '/fileupload') {
