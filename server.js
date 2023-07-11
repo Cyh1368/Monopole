@@ -15,6 +15,8 @@ const authExpire = 2 * 60; // Two minutes for developement stage, in SECONDS
 const cookieLength = 10 * 60 * 1000; // 10 min, in milliseconds
 const cryptoKey = "kA94fp@ki/2[]`jr-=`]"; // Should be kept secret in some way
 
+const questionCategories = ["me", "em", "th", "ap", "sr", "gr", "mo"];
+
 async function authLoginToken(token){
 	// Input: login token, both stored in the client cookie and database
 	// Output: Matching user name, null otherwise
@@ -148,6 +150,15 @@ app.get('/monopoleAsk', function(request, response) {
 		authResult = await authLoginToken(request.cookies.clientToken)
 		response = setResponseCookies(response, authResult);
 		response.sendFile(path.join(__dirname + '/ask.html'))
+	})()
+});
+
+app.get('/questions', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/questions.html'))
 	})()
 });
 
@@ -293,18 +304,24 @@ app.post("/askSubmit", function(request, response){
 
 		console.log(username, userid)
 		if (username=="undefined" || userid=="undefined" || !username || !userid){
-			console.log("branch A");
+			console.log("Null credentials");
 			response.send("You must log in before asking a question. <a href='/monopoleLogin'>Login</a> here.");
 			response.end();
 		} else {
 			let body = request.body;
-			console.log(body); // { title: 'ewh', main: 'wehw', mech: '1', sr: '1' }
-			
+			console.log("Request body: ", body); // { title: 'ewh', main: 'wehw', mech: '1', sr: '1' }
+			let categoryString = "";
+			for (category of questionCategories){
+				// console.log("cat", category, body[category]);
+				if (body[category]) categoryString+=category+"|"
+			}
+			// console.log(categoryString);
+
 			// Fixing time overflow
 			var current = Math.floor(Date.now() / 1000) % 2147483647; // Storing the "seconds"
 			// To prevent overflow, I take the modulus, though this may have a bug of 2147483647s period.
 
-			connection.query('INSERT INTO questb (UserID, Username, Title, Main, Categories, AskTime) VALUES (?, ?, ?, ?, ?, ?)', [userid, username, body.title, body.main, "category", current], function(error, results, fields){
+			connection.query('INSERT INTO questb (UserID, Username, Title, Main, Categories, AskTime) VALUES (?, ?, ?, ?, ?, ?)', [userid, username, body.title, body.main, categoryString, current], function(error, results, fields){
 				if (error) throw error;
 				response.send("Question submitted. Return <a href='/monopole'>Home</a>.")
 				response.end();
