@@ -41,6 +41,10 @@ async function authLoginToken(token){
 	return promiseValue;
 }
 
+function secondsToUTC(inputSec){
+	let d = new Date(inputSec*1000);
+	return d.toUTCString();
+}
 
 function setResponseCookies(res, jsonData){
 	let now = new Date();
@@ -351,6 +355,36 @@ app.post("/askSubmit", function(request, response){
 	// });
 	
 })
+
+
+app.get('/getRecentQuestions', function(request, response) {
+	let clientResult = [];
+	connection.query('SELECT * FROM questb ORDER BY AskTime DESC LIMIT 10', null, function(error, results, fields) {
+		// If there is an issue with the query, output the error
+		if (error) throw error;
+		let recentQuestions = results;
+		for (item of recentQuestions){
+			clientResult.push({
+				Username: item.Username,
+				Title: item.Title,
+				Main: item.Main,
+				Categories: item.Categories,
+				AskTime: secondsToUTC(item.AskTime),
+				QuestionID: item.QuestionID
+			});
+		}
+		console.log(clientResult);
+		response.send(clientResult);
+		response.end();
+	});
+})
+
+app.get('/viewQuestion', function(request, response) {
+	quesID = request.query.quesid;
+	response.send(quesID);
+	response.end();
+})
+
 
 // http.createServer(function (req, res) {
 //   if (req.url == '/fileupload') {
