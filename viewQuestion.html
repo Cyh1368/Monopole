@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>View Question</title>
+        <link href="viewQuestion.css" rel="stylesheet" type="text/css">
+
+        <nav id="navbar">
+            <ul class="menu">
+                <h2 id="nav-title"><a href="/monopole">CYH:Monopole</a></h2>
+                <li class="item"><a href="/">CYH</a></li>
+                <li class="item"><a href="/questions">Questions</a></li>
+                <li class="item"><a href="/monopoleAbout">About</a></li>
+                <li class="item"><a href="/monopoleAsk">Ask</a></li>
+                <li class="item"><a href="/monopoleLogin">Login / Signup</a></li>
+                <li class="item" id="userStatus">Logged Out</li>
+            </ul>
+        </nav>
+    </head>
+
+    <body>
+        <div class="bodyMessege">
+            <div class="questionDisplay">
+                <h1 id="title">Loading Title...</h1>
+                <div class="mainBody">
+                    <p id="main">Loading main body ...</p>
+                </div>
+            </div>
+            <div class="commentsDisplay">
+                <input type="text" name="commentText" placeholder="Comment" id="commentText" required>
+                <button id="submit" onclick="sendCommentToServer()">Enter</button>
+                <table id="commentsTable">
+                    Loading comments...                    
+                </table>
+            </div>
+        </div>
+        
+        <script src="viewQuestion.js"></script>
+    </body>
+</html>

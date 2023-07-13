@@ -331,31 +331,39 @@ app.post("/askSubmit", function(request, response){
 				response.end();
 			});
 		}
-	})()
-
-	
-	
-
-	// var sql = 'INSERT INTO questb (Username, Passwd) VALUES ("' + username + '", "' + hmacPassword + '");';
-	// // Execute SQL query that'll select the account from the database based on the specified username and password
-	// connection.query(sql, function(error, results, fields) {
-	// 	// If there is an issue with the query, output the error
-	// 	if (error){
-	// 		// console.log("ERROR in register()");
-	// 		throw error;
-	// 	} 
-	// 	console.log("Result is", results)
-	// 	if (results.serverStatus==2) {
-	// 		response.send("Question submitted! Return <a href='/'>home</a>." )
-	// 		response.end();
-	// 	} else {
-	// 		response.send("Question submission failed. It has something to do with the server though, not your fault. Return <a href='/';>home</a>.");
-	// 		response.end();
-	// 	}
-	// });
-	
+	})()	
 })
 
+app.post("/sendComment", function(request, response){
+	let authResult, username="not checked", userid="not checked";
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		username = authResult.Username;
+		userid = authResult.UserID;
+
+		console.log(username, userid);
+		if (username=="undefined" || userid=="undefined" || !username || !userid){
+			console.log("Null credentials");
+			response.send({'status': 0});
+			response.end();
+		} else {
+			let body = request.body;
+			console.log("Request body: ", body); // { title: 'ewh', main: 'wehw', mech: '1', sr: '1' }
+			
+			// Fixing time overflow
+			var commentTimeSec = Math.floor(body.CommentTime / 1000) % 2147483647;
+			// To prevent overflow, I take the modulus, though this may have a bug of 2147483647s period.
+
+			connection.query('INSERT INTO cmntb (QuestionID, UserID, Username, Messege, PostTime) VALUES (?, ?, ?, ?, ?)', [parseInt(body.QuestionID), userid, username, body.Comment, commentTimeSec], function(error, results, fields){
+				if (error) throw error;
+			});
+
+			response.send({'status': 1});
+			response.end();
+		}
+	})()	
+})
 
 app.get('/getRecentQuestions', function(request, response) {
 	let clientResult = [];
@@ -379,31 +387,76 @@ app.get('/getRecentQuestions', function(request, response) {
 	});
 })
 
-app.get('/viewQuestion', function(request, response) {
+app.get('/getQuestionComments', function(request, response) {
+	let clientResult = [];
 	quesID = request.query.quesid;
-	response.send(quesID);
-	response.end();
+	console.log(quesID);
+	connection.query('SELECT * FROM cmntb WHERE QuestionID = ? ORDER BY PostTime DESC LIMIT 20', [quesID], function(error, results, fields) {
+		// If there is an issue with the query, output the error
+		if (error) throw error;
+		let recentComments = results;
+		for (item of recentComments){
+			clientResult.push({
+				Username: item.Username,
+				Messege: item.Messege,
+				PostTime: secondsToUTC(item.PostTime),
+				QuestionID: item.QuestionID
+			});
+		}
+		console.log("getComments: ", clientResult);
+		response.send(clientResult);
+		response.end();
+	});
 })
 
+app.get('/getQuestionByID', function(request, response) {
+	let quesID = request.query.quesid;
+	let clientResult = [];
+	connection.query('SELECT * FROM questb WHERE QuestionID = ? ORDER BY AskTime DESC LIMIT 1', [quesID], function(error, results, fields) {
+		// If there is an issue with the query, output the error
+		if (error) throw error;
+		let item = results[0];
+		clientResult = {
+			Username: item.Username,
+			Title: item.Title,
+			Main: item.Main,
+			Categories: item.Categories,
+			AskTime: secondsToUTC(item.AskTime),
+			QuestionID: item.QuestionID
+		};
+		console.log("questionR", item);
+		console.log(clientResult);
+		response.send(clientResult);
+		response.end();
+	});
+})
 
-// http.createServer(function (req, res) {
-//   if (req.url == '/fileupload') {
-//     var form = new formidable.IncomingForm();
-//     form.parse(req, function (err, fields, files) {
-//       var oldpath = files.filetoupload.filepath;
-//       var newpath = 'C:/Users/cheng/' + files.filetoupload.originalFilename;
-//       fs.rename(oldpath, newpath, function (err) {
-//         if (err) throw err;
-//         res.writeHead(200, {'Content-Type': 'text/html'});
-//         res.write('File uploaded and moved!');
-//         res.end();
-//       });
-//     });
-//   } else {
-    // fs.readFile('main.html', function (err, data){
-    //     res.writeHead(200, {'Content-Type': 'text/html'});
-    //     res.write(data);
-    //     return res.end();
-    // })
-//   }
-// }).listen(8080);
+app.get('/viewQuestion', function(request, response) {
+	let quesID = request.query.quesid;
+
+	if (!quesID){
+		response.send("No question ID was received by the server. Return <a href='/monopole'>Home</a>.");
+		response.end();
+	} else {
+		let now = new Date();
+		let time = now.getTime();
+		let expireTime = time + cookieLength;
+		now.setTime(expireTime);
+
+		let authResult;
+		(async () => {
+			authResult = await authLoginToken(request.cookies.clientToken)
+			response = setResponseCookies(response, authResult);
+		
+			response.cookie('viewQuestionID', quesID, {
+				expires: now, // There's maybe a bug here because there's language-dependent result here like 台北標準時間
+				secure: true,
+				httpOnly: false, // As of 20230710 client-side js can't access cookie if set to true, making it less secure
+				sameSite: 'lax'
+			});
+
+			response.sendFile(path.join(__dirname + '/viewQuestion.html'))
+		})()
+	}
+})
+
