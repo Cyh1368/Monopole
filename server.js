@@ -131,6 +131,24 @@ app.get('/monopole', function(request, response) {
 	})()
 });
 
+app.get('/monopoleJoin', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/join.html'))
+	})()
+});
+
+app.get('/about', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/join.html'))
+	})()
+});
+
 app.get('/monopoleLogin', function(request, response) {
 	let authResult;
 	(async () => {

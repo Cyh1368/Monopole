@@ -27,7 +27,14 @@ h3 {
     color: #40a8f7;
 }
 
-
+li#joinus{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 0 10px;
+}
+li#joinus:hover{
+    border: 1px solid #e3e3e3;
+}
 nav {
     position: relative;
     background: #272727;

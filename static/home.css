@@ -76,9 +76,21 @@ ul{
     margin: 0;
     list-style: none;
 }
-a {
+nav a{
     color: white;
     text-decoration: none;
+}
+.bodyMessege a {
+    color: #40a8f7;
+    text-decoration: none;
+}
+li#joinus{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 0 10px;
+}
+li#joinus:hover{
+    border: 1px solid #e3e3e3;
 }
 .menu{   
     list-style-type: none;

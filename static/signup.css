@@ -159,6 +159,14 @@ nav a {
     transition: 0.2s;
     font-size: 15px;
 }
+li#joinus{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 0 10px;
+}
+li#joinus:hover{
+    border: 1px solid #e3e3e3;
+}
 
 .login form input:focus{
     outline: none;
