@@ -1,7 +1,7 @@
 {
   "name": "cheng-you",
   "version": "1.0.0",
-  "description": "A web server for the blog of Cheng-You Ho, as well as a platform for Monopole.",
+  "description": "A web server for the blog of Cheng-You Ho, as well as a platform for monopel.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

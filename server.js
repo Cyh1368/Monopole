@@ -82,7 +82,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "Ch122iv0Console.log", // Change in server, this is not the server pswd
-  database: "Monopole"
+  database: "monopel"
 });
 
 app.use(session({
@@ -122,16 +122,16 @@ app.get('/pdfs', function(request, response) {
 	//console.log("IIFE log: ", authResult);
 });
 
-app.get('/monopole', function(request, response) {
+app.get('/monopel', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
 		response = setResponseCookies(response, authResult);
-		response.sendFile(path.join(__dirname + '/monopole.html'))
+		response.sendFile(path.join(__dirname + '/monopel.html'))
 	})()
 });
 
-app.get('/monopoleJoin', function(request, response) {
+app.get('/monopelJoin', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
@@ -149,7 +149,7 @@ app.get('/about', function(request, response) {
 	})()
 });
 
-app.get('/monopoleLogin', function(request, response) {
+app.get('/monopelLogin', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
@@ -158,7 +158,7 @@ app.get('/monopoleLogin', function(request, response) {
 	})()
 });
 
-app.get('/monopoleSignup', function(request, response) {
+app.get('/monopelSignup', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
@@ -167,7 +167,7 @@ app.get('/monopoleSignup', function(request, response) {
 	})()
 });
 
-app.get('/monopoleAsk', function(request, response) {
+app.get('/monopelAsk', function(request, response) {
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
@@ -254,7 +254,7 @@ app.post('/auth', function(request, response) {
 					httpOnly: false, // So that client can't see the cookie
 					sameSite: 'lax'
 				});
-				response.redirect('/monopole');
+				response.redirect('/monopel');
                 //console.log("Directed home.");
                 
 			} else {
@@ -301,7 +301,7 @@ app.post('/register', function(request, response) {
 				} 
 				//console.log("Result is", results)
 				if (results.serverStatus==2) {
-					response.send("Registration completed! <a href='/monopoleLogin'>Login</a> here." )
+					response.send("Registration completed! <a href='/monopelLogin'>Login</a> here." )
 					response.end();
 				} else {
 					response.send('Registration somehow failed. It has something to do with the server though, not your fault.');
@@ -326,7 +326,7 @@ app.post("/askSubmit", function(request, response){
 		//console.log(username, userid)
 		if (username=="undefined" || userid=="undefined" || !username || !userid){
 			//console.log("Null credentials");
-			response.send("You must log in before asking a question. <a href='/monopoleLogin'>Login</a> here.");
+			response.send("You must log in before asking a question. <a href='/monopelLogin'>Login</a> here.");
 			response.end();
 		} else {
 			let body = request.body;
@@ -344,7 +344,7 @@ app.post("/askSubmit", function(request, response){
 
 			connection.query('INSERT INTO questb (UserID, Username, Title, Main, Categories, AskTime) VALUES (?, ?, ?, ?, ?, ?)', [userid, username, body.title, body.main, categoryString, current], function(error, results, fields){
 				if (error) throw error;
-				response.send("Question submitted. Return <a href='/monopole'>Home</a>.")
+				response.send("Question submitted. Return <a href='/monopel'>Home</a>.")
 				response.end();
 			});
 		}
@@ -452,7 +452,7 @@ app.get('/viewQuestion', function(request, response) {
 	let quesID = request.query.quesid;
 
 	if (!quesID){
-		response.send("No question ID was received by the server. Return <a href='/monopole'>Home</a>.");
+		response.send("No question ID was received by the server. Return <a href='/monopel'>Home</a>.");
 		response.end();
 	} else {
 		let now = new Date();
