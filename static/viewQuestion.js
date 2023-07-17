@@ -60,7 +60,7 @@ function sendCommentToServer(){
     }).then(response => response.json()).then(function(json){
         if (json.status==0){
             alert("You need to log in before making comments.");
-            location.replace("/monopolelogin")
+            location.replace("/monopellogin")
         } else if (json.status==1) location.reload();
         else alert("An unexpected error occurred. Consider contacting staff.")
     }
