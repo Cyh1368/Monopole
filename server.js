@@ -17,6 +17,7 @@ const cryptoKey = "kA94fp@ki/2[]`jr-=`]"; // Should be kept secret in some way
 const questionCategories = ["me", "em", "th", "ap", "sr", "gr", "mo"];
 const port=3000;
 const hostname = '0.0.0.0'; // Bind to all available network interfaces
+const databasePassword = "Ch122iv0Console.log"; // Change this in server. In case you're a hacker, this is not the server password. Quit intercepting it on Github.
 
 async function authLoginToken(token){
 	// Input: login token, both stored in the client cookie and database
@@ -80,7 +81,7 @@ var generate_key = function() {
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Jo564pX3Console.log", // Change in server, this is not the server pswd
+  password: databasePassword, 
   database: "monopel"
 });
 
