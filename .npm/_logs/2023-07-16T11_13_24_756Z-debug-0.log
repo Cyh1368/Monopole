@@ -1,0 +1,415 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@8.19.2
+2 info using node@v18.12.1
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 7ms
+7 timing config:load:cli Completed in 3ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:project Completed in 2ms
+10 timing config:load:file:/home/ec2-user/.npmrc Completed in 0ms
+11 timing config:load:user Completed in 0ms
+12 timing config:load:file:/usr/etc/npmrc Completed in 2ms
+13 timing config:load:global Completed in 2ms
+14 timing config:load:validate Completed in 1ms
+15 timing config:load:credentials Completed in 2ms
+16 timing config:load:setEnvs Completed in 1ms
+17 timing config:load Completed in 22ms
+18 timing npm:load:configload Completed in 22ms
+19 timing npm:load:mkdirpcache Completed in 2ms
+20 timing npm:load:mkdirplogs Completed in 0ms
+21 verbose title npm install mysql http crypto express express-session path store localStorage cookie-parser fs console
+22 verbose argv "install" "mysql" "http" "crypto" "express" "express-session" "path" "store" "localStorage" "cookie-parser" "fs" "console"
+23 timing npm:load:setTitle Completed in 3ms
+24 timing config:load:flatten Completed in 6ms
+25 timing npm:load:display Completed in 9ms
+26 verbose logfile logs-max:10 dir:/home/ec2-user/.npm/_logs
+27 verbose logfile /home/ec2-user/.npm/_logs/2023-07-16T11_13_24_756Z-debug-0.log
+28 timing npm:load:logFile Completed in 8ms
+29 timing npm:load:timers Completed in 0ms
+30 timing npm:load:configScope Completed in 0ms
+31 timing npm:load Completed in 48ms
+32 timing arborist:ctor Completed in 2ms
+33 silly logfile done cleaning log files
+34 timing idealTree:init Completed in 180ms
+35 timing idealTree:userRequests Completed in 4ms
+36 silly idealTree buildDeps
+37 silly fetch manifest cookie-parser@^1.4.6
+38 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+39 http fetch GET 200 https://registry.npmjs.org/cookie-parser 245ms (cache miss)
+40 silly fetch manifest express@^4.18.2
+41 http fetch GET 200 https://registry.npmjs.org/npm 526ms (cache miss)
+42 http fetch GET 200 https://registry.npmjs.org/express 71ms (cache miss)
+43 silly fetch manifest express-session@^1.17.3
+44 http fetch GET 200 https://registry.npmjs.org/express-session 39ms (cache miss)
+45 silly fetch manifest localStorage@^1.0.4
+46 http fetch GET 200 https://registry.npmjs.org/localStorage 583ms (cache miss)
+47 silly fetch manifest store@^2.0.12
+48 http fetch GET 200 https://registry.npmjs.org/store 580ms (cache miss)
+49 silly fetch manifest mysql@*
+50 http fetch GET 200 https://registry.npmjs.org/mysql 26ms (cache miss)
+51 silly fetch manifest http@*
+52 http fetch GET 200 https://registry.npmjs.org/http 602ms (cache miss)
+53 silly fetch manifest crypto@*
+54 http fetch GET 200 https://registry.npmjs.org/crypto 584ms (cache miss)
+55 silly fetch manifest path@*
+56 http fetch GET 200 https://registry.npmjs.org/path 579ms (cache miss)
+57 silly fetch manifest fs@*
+58 http fetch GET 200 https://registry.npmjs.org/fs 25ms (cache miss)
+59 silly fetch manifest console@*
+60 http fetch GET 200 https://registry.npmjs.org/console 584ms (cache miss)
+61 silly placeDep ROOT console@0.7.2 OK for: cheng-you@1.0.0 want: *
+62 silly placeDep ROOT cookie-parser@1.4.6 REPLACE for: cheng-you@1.0.0 want: ^1.4.6
+63 silly placeDep ROOT crypto@1.0.1 OK for: cheng-you@1.0.0 want: *
+64 silly placeDep ROOT express@4.18.2 REPLACE for: cheng-you@1.0.0 want: ^4.18.2
+65 silly placeDep ROOT express-session@1.17.3 REPLACE for: cheng-you@1.0.0 want: ^1.17.3
+66 silly placeDep ROOT fs@0.0.1-security OK for: cheng-you@1.0.0 want: *
+67 silly placeDep ROOT http@0.0.1-security OK for: cheng-you@1.0.0 want: *
+68 silly placeDep ROOT localStorage@1.0.4 REPLACE for: cheng-you@1.0.0 want: ^1.0.4
+69 silly placeDep ROOT mysql@2.18.1 OK for: cheng-you@1.0.0 want: *
+70 silly placeDep ROOT path@0.12.7 OK for: cheng-you@1.0.0 want: *
+71 silly placeDep ROOT store@2.0.12 REPLACE for: cheng-you@1.0.0 want: ^2.0.12
+72 silly fetch manifest bignumber.js@9.0.0
+73 silly fetch manifest readable-stream@2.3.7
+74 silly fetch manifest safe-buffer@5.1.2
+75 silly fetch manifest sqlstring@2.3.1
+76 silly fetch manifest process@^0.11.1
+77 silly fetch manifest util@^0.10.3
+78 http fetch GET 200 https://registry.npmjs.org/bignumber.js 46ms (cache miss)
+79 http fetch GET 200 https://registry.npmjs.org/readable-stream 52ms (cache miss)
+80 http fetch GET 200 https://registry.npmjs.org/safe-buffer 56ms (cache miss)
+81 http fetch GET 200 https://registry.npmjs.org/process 64ms (cache miss)
+82 http fetch GET 200 https://registry.npmjs.org/sqlstring 79ms (cache miss)
+83 http fetch GET 200 https://registry.npmjs.org/util 71ms (cache miss)
+84 timing idealTree:#root Completed in 4073ms
+85 timing idealTree:node_modules/console Completed in 0ms
+86 timing idealTree:node_modules/cookie-parser Completed in 0ms
+87 timing idealTree:node_modules/crypto Completed in 0ms
+88 timing idealTree:node_modules/express Completed in 0ms
+89 timing idealTree:node_modules/express-session Completed in 0ms
+90 timing idealTree:node_modules/fs Completed in 0ms
+91 timing idealTree:node_modules/http Completed in 0ms
+92 timing idealTree:node_modules/localStorage Completed in 0ms
+93 silly placeDep ROOT bignumber.js@9.0.0 OK for: mysql@2.18.1 want: 9.0.0
+94 silly placeDep ROOT readable-stream@2.3.7 OK for: mysql@2.18.1 want: 2.3.7
+95 silly placeDep node_modules/mysql safe-buffer@5.1.2 OK for: mysql@2.18.1 want: 5.1.2
+96 silly placeDep ROOT sqlstring@2.3.1 OK for: mysql@2.18.1 want: 2.3.1
+97 silly fetch manifest core-util-is@~1.0.0
+98 silly fetch manifest isarray@~1.0.0
+99 silly fetch manifest process-nextick-args@~2.0.0
+100 silly fetch manifest safe-buffer@~5.1.1
+101 silly fetch manifest string_decoder@~1.1.1
+102 silly fetch manifest util-deprecate@~1.0.1
+103 http fetch GET 200 https://registry.npmjs.org/process-nextick-args 56ms (cache miss)
+104 http fetch GET 200 https://registry.npmjs.org/core-util-is 60ms (cache miss)
+105 http fetch GET 200 https://registry.npmjs.org/util-deprecate 58ms (cache miss)
+106 http fetch GET 200 https://registry.npmjs.org/isarray 62ms (cache miss)
+107 http fetch GET 200 https://registry.npmjs.org/string_decoder 61ms (cache miss)
+108 timing idealTree:node_modules/mysql Completed in 72ms
+109 timing idealTree:node_modules/bignumber.js Completed in 1ms
+110 silly placeDep ROOT process@0.11.10 OK for: path@0.12.7 want: ^0.11.1
+111 silly placeDep ROOT util@0.10.4 OK for: path@0.12.7 want: ^0.10.3
+112 silly fetch manifest inherits@2.0.3
+113 http fetch GET 200 https://registry.npmjs.org/inherits 24ms (cache miss)
+114 timing idealTree:node_modules/path Completed in 36ms
+115 timing idealTree:node_modules/process Completed in 0ms
+116 silly placeDep ROOT core-util-is@1.0.3 OK for: readable-stream@2.3.7 want: ~1.0.0
+117 silly placeDep ROOT isarray@1.0.0 OK for: readable-stream@2.3.7 want: ~1.0.0
+118 silly placeDep ROOT process-nextick-args@2.0.1 OK for: readable-stream@2.3.7 want: ~2.0.0
+119 silly placeDep node_modules/readable-stream safe-buffer@5.1.2 OK for: readable-stream@2.3.7 want: ~5.1.1
+120 silly placeDep ROOT string_decoder@1.1.1 OK for: readable-stream@2.3.7 want: ~1.1.1
+121 silly placeDep ROOT util-deprecate@1.0.2 OK for: readable-stream@2.3.7 want: ~1.0.1
+122 silly fetch manifest safe-buffer@~5.1.0
+123 timing idealTree:node_modules/readable-stream Completed in 9ms
+124 timing idealTree:node_modules/core-util-is Completed in 0ms
+125 timing idealTree:node_modules/isarray Completed in 1ms
+126 timing idealTree:node_modules/process-nextick-args Completed in 0ms
+127 timing idealTree:node_modules/sqlstring Completed in 0ms
+128 timing idealTree:node_modules/store Completed in 0ms
+129 silly placeDep node_modules/string_decoder safe-buffer@5.1.2 OK for: string_decoder@1.1.1 want: ~5.1.0
+130 timing idealTree:node_modules/string_decoder Completed in 1ms
+131 silly placeDep node_modules/util inherits@2.0.3 OK for: util@0.10.4 want: 2.0.3
+132 timing idealTree:node_modules/util Completed in 1ms
+133 timing idealTree:node_modules/util-deprecate Completed in 0ms
+134 timing idealTree:node_modules/mysql/node_modules/safe-buffer Completed in 0ms
+135 timing idealTree:node_modules/readable-stream/node_modules/safe-buffer Completed in 1ms
+136 timing idealTree:node_modules/string_decoder/node_modules/safe-buffer Completed in 0ms
+137 timing idealTree:node_modules/util/node_modules/inherits Completed in 0ms
+138 timing idealTree:buildDeps Completed in 4201ms
+139 timing idealTree:fixDepFlags Completed in 2ms
+140 timing idealTree Completed in 4393ms
+141 timing reify:loadTrees Completed in 4395ms
+142 timing reify:diffTrees Completed in 7ms
+143 silly reify moves {}
+144 timing reify:retireShallow Completed in 1ms
+145 timing reify:createSparse Completed in 8ms
+146 timing reify:loadBundles Completed in 0ms
+147 silly audit bulk request {
+147 silly audit   abbrev: [ '1.1.1' ],
+147 silly audit   accepts: [ '1.3.8' ],
+147 silly audit   anymatch: [ '3.1.3' ],
+147 silly audit   'array-flatten': [ '1.1.1' ],
+147 silly audit   'balanced-match': [ '1.0.2' ],
+147 silly audit   'binary-extensions': [ '2.2.0' ],
+147 silly audit   'body-parser': [ '1.20.1' ],
+147 silly audit   debug: [ '2.6.9', '3.2.7' ],
+147 silly audit   ms: [ '2.0.0', '2.1.3' ],
+147 silly audit   'brace-expansion': [ '1.1.11' ],
+147 silly audit   braces: [ '3.0.2' ],
+147 silly audit   bytes: [ '3.1.2' ],
+147 silly audit   'call-bind': [ '1.0.2' ],
+147 silly audit   chokidar: [ '3.5.3' ],
+147 silly audit   'concat-map': [ '0.0.1' ],
+147 silly audit   'content-disposition': [ '0.5.4' ],
+147 silly audit   'content-type': [ '1.0.5' ],
+147 silly audit   cookie: [ '0.5.0', '0.4.1', '0.4.2' ],
+147 silly audit   'cookie-parse': [ '0.4.0' ],
+147 silly audit   'cookie-signature': [ '1.0.6' ],
+147 silly audit   depd: [ '2.0.0' ],
+147 silly audit   destroy: [ '1.2.0' ],
+147 silly audit   'ee-first': [ '1.1.1' ],
+147 silly audit   encodeurl: [ '1.0.2' ],
+147 silly audit   'escape-html': [ '1.0.3' ],
+147 silly audit   etag: [ '1.8.1' ],
+147 silly audit   'fill-range': [ '7.0.1' ],
+147 silly audit   finalhandler: [ '1.2.0' ],
+147 silly audit   forwarded: [ '0.2.0' ],
+147 silly audit   fresh: [ '0.5.2' ],
+147 silly audit   fsevents: [ '2.3.2' ],
+147 silly audit   'function-bind': [ '1.1.1' ],
+147 silly audit   'get-intrinsic': [ '1.2.1' ],
+147 silly audit   'glob-parent': [ '5.1.2' ],
+147 silly audit   has: [ '1.0.3' ],
+147 silly audit   'has-flag': [ '3.0.0' ],
+147 silly audit   'has-proto': [ '1.0.1' ],
+147 silly audit   'has-symbols': [ '1.0.3' ],
+147 silly audit   'http-errors': [ '2.0.0' ],
+147 silly audit   'iconv-lite': [ '0.4.24' ],
+147 silly audit   'ignore-by-default': [ '1.0.1' ],
+147 silly audit   inherits: [ '2.0.4', '2.0.3' ],
+147 silly audit   'ipaddr.js': [ '1.9.1' ],
+147 silly audit   'is-binary-path': [ '2.1.0' ],
+147 silly audit   'is-extglob': [ '2.1.1' ],
+147 silly audit   'is-glob': [ '4.0.3' ],
+147 silly audit   'is-number': [ '7.0.0' ],
+147 silly audit   'media-typer': [ '0.3.0' ],
+147 silly audit   'merge-descriptors': [ '1.0.1' ],
+147 silly audit   methods: [ '1.1.2' ],
+147 silly audit   mime: [ '1.6.0' ],
+147 silly audit   'mime-db': [ '1.52.0' ],
+147 silly audit   'mime-types': [ '2.1.35' ],
+147 silly audit   minimatch: [ '3.1.2' ],
+147 silly audit   negotiator: [ '0.6.3' ],
+147 silly audit   nodemon: [ '2.0.22' ],
+147 silly audit   nopt: [ '1.0.10' ],
+147 silly audit   'normalize-path': [ '3.0.0' ],
+147 silly audit   'object-inspect': [ '1.12.3' ],
+147 silly audit   'on-finished': [ '2.4.1' ],
+147 silly audit   'on-headers': [ '1.0.2' ],
+147 silly audit   parseurl: [ '1.3.3' ],
+147 silly audit   'path-to-regexp': [ '0.1.7' ],
+147 silly audit   picomatch: [ '2.3.1' ],
+147 silly audit   'proxy-addr': [ '2.0.7' ],
+147 silly audit   'pstree.remy': [ '1.1.8' ],
+147 silly audit   qs: [ '6.11.0' ],
+147 silly audit   'random-bytes': [ '1.0.0' ],
+147 silly audit   'range-parser': [ '1.2.1' ],
+147 silly audit   'raw-body': [ '2.5.1' ],
+147 silly audit   readdirp: [ '3.6.0' ],
+147 silly audit   'safe-buffer': [ '5.2.1', '5.1.2' ],
+147 silly audit   'safer-buffer': [ '2.1.2' ],
+147 silly audit   semver: [ '5.7.1', '7.0.0' ],
+147 silly audit   send: [ '0.18.0' ],
+147 silly audit   'serve-static': [ '1.15.0' ],
+147 silly audit   setprototypeof: [ '1.2.0' ],
+147 silly audit   'side-channel': [ '1.0.4' ],
+147 silly audit   'simple-update-notifier': [ '1.1.0' ],
+147 silly audit   statuses: [ '2.0.1' ],
+147 silly audit   'supports-color': [ '5.5.0' ],
+147 silly audit   'to-regex-range': [ '5.0.1' ],
+147 silly audit   toidentifier: [ '1.0.1' ],
+147 silly audit   touch: [ '3.1.0' ],
+147 silly audit   'type-is': [ '1.6.18' ],
+147 silly audit   'uid-safe': [ '2.1.5' ],
+147 silly audit   undefsafe: [ '2.0.5' ],
+147 silly audit   unpipe: [ '1.0.0' ],
+147 silly audit   'utils-merge': [ '1.0.1' ],
+147 silly audit   vary: [ '1.1.2' ],
+147 silly audit   console: [ '0.7.2' ],
+147 silly audit   'cookie-parser': [ '1.4.6' ],
+147 silly audit   crypto: [ '1.0.1' ],
+147 silly audit   express: [ '4.18.2' ],
+147 silly audit   'express-session': [ '1.17.3' ],
+147 silly audit   fs: [ '0.0.1-security' ],
+147 silly audit   http: [ '0.0.1-security' ],
+147 silly audit   localStorage: [ '1.0.4' ],
+147 silly audit   mysql: [ '2.18.1' ],
+147 silly audit   path: [ '0.12.7' ],
+147 silly audit   store: [ '2.0.12' ],
+147 silly audit   'bignumber.js': [ '9.0.0' ],
+147 silly audit   'readable-stream': [ '2.3.7' ],
+147 silly audit   sqlstring: [ '2.3.1' ],
+147 silly audit   process: [ '0.11.10' ],
+147 silly audit   util: [ '0.10.4' ],
+147 silly audit   'core-util-is': [ '1.0.3' ],
+147 silly audit   isarray: [ '1.0.0' ],
+147 silly audit   'process-nextick-args': [ '2.0.1' ],
+147 silly audit   string_decoder: [ '1.1.1' ],
+147 silly audit   'util-deprecate': [ '1.0.2' ]
+147 silly audit }
+148 verbose reify failed optional dependency /home/ec2-user/node_modules/fsevents
+149 silly reify mark deleted [ '/home/ec2-user/node_modules/fsevents' ]
+150 timing reifyNode:node_modules/fsevents Completed in 11ms
+151 silly tarball no local data for util-deprecate@https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz. Extracting by manifest.
+152 silly tarball no local data for string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz. Extracting by manifest.
+153 silly tarball no local data for process-nextick-args@https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz. Extracting by manifest.
+154 silly tarball no local data for isarray@https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz. Extracting by manifest.
+155 silly tarball no local data for core-util-is@https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz. Extracting by manifest.
+156 silly tarball no local data for util@https://registry.npmjs.org/util/-/util-0.10.4.tgz. Extracting by manifest.
+157 silly tarball no local data for process@https://registry.npmjs.org/process/-/process-0.11.10.tgz. Extracting by manifest.
+158 silly tarball no local data for sqlstring@https://registry.npmjs.org/sqlstring/-/sqlstring-2.3.1.tgz. Extracting by manifest.
+159 silly tarball no local data for readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz. Extracting by manifest.
+160 silly tarball no local data for bignumber.js@https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.0.0.tgz. Extracting by manifest.
+161 silly tarball no local data for path@https://registry.npmjs.org/path/-/path-0.12.7.tgz. Extracting by manifest.
+162 silly tarball no local data for mysql@https://registry.npmjs.org/mysql/-/mysql-2.18.1.tgz. Extracting by manifest.
+163 silly tarball no local data for http@https://registry.npmjs.org/http/-/http-0.0.1-security.tgz. Extracting by manifest.
+164 silly tarball no local data for fs@https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz. Extracting by manifest.
+165 silly tarball no local data for crypto@https://registry.npmjs.org/crypto/-/crypto-1.0.1.tgz. Extracting by manifest.
+166 silly tarball no local data for console@https://registry.npmjs.org/console/-/console-0.7.2.tgz. Extracting by manifest.
+167 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz. Extracting by manifest.
+168 silly tarball no local data for inherits@https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz. Extracting by manifest.
+169 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz. Extracting by manifest.
+170 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz. Extracting by manifest.
+171 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 210ms
+172 timing auditReport:getReport Completed in 217ms
+173 silly audit report {
+173 silly audit report   semver: [
+173 silly audit report     {
+173 silly audit report       id: 1092459,
+173 silly audit report       url: 'https://github.com/advisories/GHSA-c2qf-rxjj-qqgw',
+173 silly audit report       title: 'semver vulnerable to Regular Expression Denial of Service',
+173 silly audit report       severity: 'moderate',
+173 silly audit report       vulnerable_versions: '<5.7.2',
+173 silly audit report       cwe: [Array],
+173 silly audit report       cvss: [Object]
+173 silly audit report     },
+173 silly audit report     {
+173 silly audit report       id: 1092461,
+173 silly audit report       url: 'https://github.com/advisories/GHSA-c2qf-rxjj-qqgw',
+173 silly audit report       title: 'semver vulnerable to Regular Expression Denial of Service',
+173 silly audit report       severity: 'moderate',
+173 silly audit report       vulnerable_versions: '>=7.0.0 <7.5.2',
+173 silly audit report       cwe: [Array],
+173 silly audit report       cvss: [Object]
+173 silly audit report     }
+173 silly audit report   ]
+173 silly audit report }
+174 timing metavuln:cache:get:security-advisory:semver:4rAGLI77ah4GjE+TMeF3bs1i2q5PTlh8Yy3a788BL+nsbnDjtFmvZQR4wF1DxsFHGN6S44lxm3JWgPb3W5s30Q== Completed in 11ms
+175 timing metavuln:cache:get:security-advisory:semver:efe8VB5q4mZD3/ujTc9L0aaWirUeY/ViAybQsDFvpvA+7TSAyha/N70vqCuJldXlcpql0BxojmVI2ei/NlY7rg== Completed in 9ms
+176 http fetch GET 200 https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz 370ms (cache miss)
+177 timing reifyNode:node_modules/core-util-is Completed in 415ms
+178 http fetch GET 200 https://registry.npmjs.org/console/-/console-0.7.2.tgz 346ms (cache miss)
+179 timing reifyNode:node_modules/console Completed in 414ms
+180 http fetch GET 200 https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz 350ms (cache miss)
+181 timing reifyNode:node_modules/fs Completed in 415ms
+182 http fetch GET 200 https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz 384ms (cache miss)
+183 timing reifyNode:node_modules/util-deprecate Completed in 420ms
+184 http fetch GET 200 https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz 381ms (cache miss)
+185 timing reifyNode:node_modules/process-nextick-args Completed in 419ms
+186 http fetch GET 200 https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz 380ms (cache miss)
+187 timing reifyNode:node_modules/isarray Completed in 420ms
+188 http fetch GET 200 https://registry.npmjs.org/crypto/-/crypto-1.0.1.tgz 354ms (cache miss)
+189 warn deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+190 timing reifyNode:node_modules/crypto Completed in 423ms
+191 http fetch GET 200 https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz 314ms (cache miss)
+192 timing reifyNode:node_modules/util/node_modules/inherits Completed in 427ms
+193 http fetch GET 200 https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz 392ms (cache miss)
+194 timing reifyNode:node_modules/string_decoder Completed in 430ms
+195 http fetch GET 200 https://registry.npmjs.org/http/-/http-0.0.1-security.tgz 368ms (cache miss)
+196 timing reifyNode:node_modules/http Completed in 428ms
+197 http fetch GET 200 https://registry.npmjs.org/util/-/util-0.10.4.tgz 390ms (cache miss)
+198 timing reifyNode:node_modules/util Completed in 436ms
+199 http fetch GET 200 https://registry.npmjs.org/sqlstring/-/sqlstring-2.3.1.tgz 386ms (cache miss)
+200 timing reifyNode:node_modules/sqlstring Completed in 435ms
+201 http fetch GET 200 https://registry.npmjs.org/path/-/path-0.12.7.tgz 378ms (cache miss)
+202 timing reifyNode:node_modules/path Completed in 436ms
+203 http fetch GET 200 https://registry.npmjs.org/process/-/process-0.11.10.tgz 390ms (cache miss)
+204 timing reifyNode:node_modules/process Completed in 437ms
+205 http fetch GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 332ms (cache miss)
+206 timing reifyNode:node_modules/string_decoder/node_modules/safe-buffer Completed in 439ms
+207 http fetch GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 323ms (cache miss)
+208 timing reifyNode:node_modules/mysql/node_modules/safe-buffer Completed in 440ms
+209 http fetch GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 326ms (cache miss)
+210 timing reifyNode:node_modules/readable-stream/node_modules/safe-buffer Completed in 441ms
+211 http fetch GET 200 https://registry.npmjs.org/semver 313ms (cache miss)
+212 timing metavuln:packument:semver Completed in 315ms
+213 timing metavuln:load:security-advisory:semver:1092459 Completed in 6ms
+214 timing metavuln:load:security-advisory:semver:1092461 Completed in 14ms
+215 http fetch GET 200 https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz 492ms (cache miss)
+216 timing reifyNode:node_modules/readable-stream Completed in 547ms
+217 timing metavuln:cache:put:security-advisory:semver:efe8VB5q4mZD3/ujTc9L0aaWirUeY/ViAybQsDFvpvA+7TSAyha/N70vqCuJldXlcpql0BxojmVI2ei/NlY7rg== Completed in 23ms
+218 timing metavuln:calculate:security-advisory:semver:1092461 Completed in 358ms
+219 timing metavuln:cache:put:security-advisory:semver:4rAGLI77ah4GjE+TMeF3bs1i2q5PTlh8Yy3a788BL+nsbnDjtFmvZQR4wF1DxsFHGN6S44lxm3JWgPb3W5s30Q== Completed in 41ms
+220 timing metavuln:calculate:security-advisory:semver:1092459 Completed in 363ms
+221 timing metavuln:cache:get:security-advisory:nodemon:hIN+ybvOtoSMpyph3SBzy6Q5EIGGAsN+QUmmNfBJgPOo19amk/K/e2V2YKiJsngZkMq/vFBxSuscust8YumaoA== Completed in 2ms
+222 http fetch GET 200 https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.0.0.tgz 519ms (cache miss)
+223 timing reifyNode:node_modules/bignumber.js Completed in 575ms
+224 http fetch GET 200 https://registry.npmjs.org/mysql/-/mysql-2.18.1.tgz 533ms (cache miss)
+225 timing reifyNode:node_modules/mysql Completed in 593ms
+226 timing reify:unpack Completed in 595ms
+227 timing reify:unretire Completed in 1ms
+228 timing build:queue Completed in 3ms
+229 timing build:deps Completed in 4ms
+230 timing build Completed in 4ms
+231 timing reify:build Completed in 5ms
+232 timing reify:trash Completed in 1ms
+233 timing reify:save Completed in 57ms
+234 http fetch GET 200 https://registry.npmjs.org/nodemon 604ms (cache miss)
+235 timing metavuln:packument:nodemon Completed in 608ms
+236 timing metavuln:load:security-advisory:nodemon:4rAGLI77ah4GjE+TMeF3bs1i2q5PTlh8Yy3a788BL+nsbnDjtFmvZQR4wF1DxsFHGN6S44lxm3JWgPb3W5s30Q== Completed in 28ms
+237 timing metavuln:cache:put:security-advisory:nodemon:hIN+ybvOtoSMpyph3SBzy6Q5EIGGAsN+QUmmNfBJgPOo19amk/K/e2V2YKiJsngZkMq/vFBxSuscust8YumaoA== Completed in 4ms
+238 timing metavuln:calculate:security-advisory:nodemon:4rAGLI77ah4GjE+TMeF3bs1i2q5PTlh8Yy3a788BL+nsbnDjtFmvZQR4wF1DxsFHGN6S44lxm3JWgPb3W5s30Q== Completed in 640ms
+239 timing metavuln:cache:get:security-advisory:simple-update-notifier:m+cxUkU9cq6+3VHnRT4PX3U5p098vRvyH0NyDQfXNXjtYSgLtr4a7EIl9pj5p7iqQ8qpisRbyGr1WOubpeAyxQ== Completed in 2ms
+240 http fetch GET 200 https://registry.npmjs.org/simple-update-notifier 23ms (cache miss)
+241 timing metavuln:packument:simple-update-notifier Completed in 25ms
+242 timing metavuln:load:security-advisory:simple-update-notifier:efe8VB5q4mZD3/ujTc9L0aaWirUeY/ViAybQsDFvpvA+7TSAyha/N70vqCuJldXlcpql0BxojmVI2ei/NlY7rg== Completed in 6ms
+243 timing metavuln:cache:put:security-advisory:simple-update-notifier:m+cxUkU9cq6+3VHnRT4PX3U5p098vRvyH0NyDQfXNXjtYSgLtr4a7EIl9pj5p7iqQ8qpisRbyGr1WOubpeAyxQ== Completed in 2ms
+244 timing metavuln:calculate:security-advisory:simple-update-notifier:efe8VB5q4mZD3/ujTc9L0aaWirUeY/ViAybQsDFvpvA+7TSAyha/N70vqCuJldXlcpql0BxojmVI2ei/NlY7rg== Completed in 33ms
+245 timing metavuln:cache:get:security-advisory:nodemon:xd6drkzqn9W3rVs0jdY+RGZi/gFvGSmG9KeYTILJHfrByloHrAx+8n7CNvX5MpqnWl7KMehmeiiJgxYHMravqw== Completed in 0ms
+246 timing metavuln:load:security-advisory:nodemon:m+cxUkU9cq6+3VHnRT4PX3U5p098vRvyH0NyDQfXNXjtYSgLtr4a7EIl9pj5p7iqQ8qpisRbyGr1WOubpeAyxQ== Completed in 31ms
+247 timing metavuln:cache:put:security-advisory:nodemon:xd6drkzqn9W3rVs0jdY+RGZi/gFvGSmG9KeYTILJHfrByloHrAx+8n7CNvX5MpqnWl7KMehmeiiJgxYHMravqw== Completed in 3ms
+248 timing metavuln:calculate:security-advisory:nodemon:m+cxUkU9cq6+3VHnRT4PX3U5p098vRvyH0NyDQfXNXjtYSgLtr4a7EIl9pj5p7iqQ8qpisRbyGr1WOubpeAyxQ== Completed in 34ms
+249 timing auditReport:init Completed in 1083ms
+250 timing reify:audit Completed in 1302ms
+251 timing reify Completed in 5806ms
+252 silly ADD node_modules/util-deprecate
+253 silly ADD node_modules/string_decoder
+254 silly ADD node_modules/string_decoder/node_modules/safe-buffer
+255 silly ADD node_modules/process-nextick-args
+256 silly ADD node_modules/isarray
+257 silly ADD node_modules/core-util-is
+258 silly ADD node_modules/util
+259 silly ADD node_modules/util/node_modules/inherits
+260 silly ADD node_modules/process
+261 silly ADD node_modules/sqlstring
+262 silly ADD node_modules/readable-stream
+263 silly ADD node_modules/readable-stream/node_modules/safe-buffer
+264 silly ADD node_modules/bignumber.js
+265 silly ADD node_modules/path
+266 silly ADD node_modules/mysql
+267 silly ADD node_modules/mysql/node_modules/safe-buffer
+268 silly ADD node_modules/http
+269 silly ADD node_modules/fs
+270 silly ADD node_modules/crypto
+271 silly ADD node_modules/console
+272 silly ADD
+273 timing command:install Completed in 5826ms
+274 notice
+274 notice New [31mmajor[39m version of npm available! [31m8.19.2[39m -> [32m9.8.0[39m
+274 notice Changelog: [36mhttps://github.com/npm/cli/releases/tag/v9.8.0[39m
+274 notice Run [32mnpm install -g npm@9.8.0[39m to update!
+274 notice
+275 verbose exit 0
+276 timing npm Completed in 5991ms
+277 info ok

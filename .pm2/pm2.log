@@ -1,0 +1,18 @@
+2023-07-16T14:27:03: PM2 log: ===============================================================================
+2023-07-16T14:27:03: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2023-07-16T14:27:03: PM2 log: Time                 : Sun Jul 16 2023 14:27:03 GMT+0000 (Coordinated Universal Time)
+2023-07-16T14:27:03: PM2 log: PM2 version          : 5.3.0
+2023-07-16T14:27:03: PM2 log: Node.js version      : 18.12.1
+2023-07-16T14:27:03: PM2 log: Current arch         : x64
+2023-07-16T14:27:03: PM2 log: PM2 home             : /home/ec2-user/.pm2
+2023-07-16T14:27:03: PM2 log: PM2 PID file         : /home/ec2-user/.pm2/pm2.pid
+2023-07-16T14:27:03: PM2 log: RPC socket file      : /home/ec2-user/.pm2/rpc.sock
+2023-07-16T14:27:03: PM2 log: BUS socket file      : /home/ec2-user/.pm2/pub.sock
+2023-07-16T14:27:03: PM2 log: Application log path : /home/ec2-user/.pm2/logs
+2023-07-16T14:27:03: PM2 log: Worker Interval      : 30000
+2023-07-16T14:27:03: PM2 log: Process dump file    : /home/ec2-user/.pm2/dump.pm2
+2023-07-16T14:27:03: PM2 log: Concurrent actions   : 2
+2023-07-16T14:27:03: PM2 log: SIGTERM timeout      : 1600
+2023-07-16T14:27:03: PM2 log: ===============================================================================
+2023-07-16T14:27:03: PM2 log: App [server:0] starting in -fork mode-
+2023-07-16T14:27:03: PM2 log: App [server:0] online

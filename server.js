@@ -4,7 +4,6 @@ const crypto = require('crypto');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-const store = require('store');
 var localStorage = require('localStorage');
 var cookies = require("cookie-parser");
 // var formidable = require('formidable');
@@ -81,7 +80,7 @@ var generate_key = function() {
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Ch122iv0Console.log", // Change in server, this is not the server pswd
+  password: "Jo564pX3Console.log", // Change in server, this is not the server pswd
   database: "monopel"
 });
 

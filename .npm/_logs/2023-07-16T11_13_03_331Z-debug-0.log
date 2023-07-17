@@ -1,0 +1,62 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@8.19.2
+2 info using node@v18.12.1
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 2ms
+6 timing config:load:builtin Completed in 2ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:project Completed in 1ms
+10 timing config:load:file:/home/ec2-user/.npmrc Completed in 0ms
+11 timing config:load:user Completed in 0ms
+12 timing config:load:file:/usr/etc/npmrc Completed in 2ms
+13 timing config:load:global Completed in 3ms
+14 timing config:load:validate Completed in 1ms
+15 timing config:load:credentials Completed in 1ms
+16 timing config:load:setEnvs Completed in 2ms
+17 timing config:load Completed in 17ms
+18 timing npm:load:configload Completed in 17ms
+19 timing npm:load:mkdirpcache Completed in 2ms
+20 timing npm:load:mkdirplogs Completed in 0ms
+21 verbose title npm install mysql http crypto express express-session, path, store, localStorage, cookie-parser, fs, console
+22 verbose argv "install" "mysql" "http" "crypto" "express" "express-session," "path," "store," "localStorage," "cookie-parser," "fs," "console"
+23 timing npm:load:setTitle Completed in 4ms
+24 timing config:load:flatten Completed in 6ms
+25 timing npm:load:display Completed in 9ms
+26 verbose logfile logs-max:10 dir:/home/ec2-user/.npm/_logs
+27 verbose logfile /home/ec2-user/.npm/_logs/2023-07-16T11_13_03_331Z-debug-0.log
+28 timing npm:load:logFile Completed in 9ms
+29 timing npm:load:timers Completed in 1ms
+30 timing npm:load:configScope Completed in 0ms
+31 timing npm:load Completed in 43ms
+32 timing arborist:ctor Completed in 1ms
+33 silly logfile done cleaning log files
+34 timing idealTree:init Completed in 173ms
+35 timing idealTree Completed in 181ms
+36 timing command:install Completed in 278ms
+37 verbose stack Error: Invalid tag name "express-session," of package "express-session,": Tags may not have any characters that encodeURIComponent encodes.
+37 verbose stack     at invalidTagName (/usr/lib/node_modules/npm/node_modules/npm-package-arg/lib/npa.js:98:15)
+37 verbose stack     at fromRegistry (/usr/lib/node_modules/npm/node_modules/npm-package-arg/lib/npa.js:397:13)
+37 verbose stack     at resolve (/usr/lib/node_modules/npm/node_modules/npm-package-arg/lib/npa.js:85:12)
+37 verbose stack     at npa (/usr/lib/node_modules/npm/node_modules/npm-package-arg/lib/npa.js:51:10)
+37 verbose stack     at /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:526:18
+37 verbose stack     at Array.map (<anonymous>)
+37 verbose stack     at [add] (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:523:27)
+37 verbose stack     at [applyUserRequestsToNode] (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:492:23)
+37 verbose stack     at [applyUserRequests] (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:429:43)
+37 verbose stack     at Arborist.buildIdealTree (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:210:37)
+38 verbose cwd /home/ec2-user
+39 verbose Linux 6.1.34-59.116.amzn2023.x86_64
+40 verbose node v18.12.1
+41 verbose npm  v8.19.2
+42 error code EINVALIDTAGNAME
+43 error Invalid tag name "express-session," of package "express-session,": Tags may not have any characters that encodeURIComponent encodes.
+44 verbose exit 1
+45 timing npm Completed in 450ms
+46 verbose unfinished npm timer reify 1689505983498
+47 verbose unfinished npm timer reify:loadTrees 1689505983587
+48 verbose unfinished npm timer idealTree:userRequests 1689505983766
+49 verbose code 1
+50 error A complete log of this run can be found in:
+50 error     /home/ec2-user/.npm/_logs/2023-07-16T11_13_03_331Z-debug-0.log
