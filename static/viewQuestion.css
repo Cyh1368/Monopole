@@ -40,8 +40,8 @@ table {
 }
 
 th, td {
-    border-bottom: 1px solid white;
-    padding: 15px;
+    border-bottom: none;
+    padding: 8px;
     font-size: 20px;
 }
 
@@ -66,7 +66,13 @@ td:nth-child(1) {
 }
 /* the second */
 td:nth-child(2) {
+    width: 200px;
+    text-align: right;
+    border-left: 1px solid white;
+}
+td:nth-child(3) {
     width: 150px;
+    text-align: right;
 }
 nav {
     position: relative;

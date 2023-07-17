@@ -140,7 +140,10 @@ td:nth-child(1) {
 }
 /* the second */
 td:nth-child(2) {
-    width: 150px;
+    width: 300px;
+}
+td:nth-child(3) {
+    width: 300px;
 }
 nav {
     position: relative;
