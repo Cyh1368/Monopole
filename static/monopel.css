@@ -173,7 +173,7 @@ li#joinus:hover{
     width: 50%;
     height: 100%; 
     /* 100% of .bodyMessege */
-    float: left;
+    float: right;
     background: radial-gradient(#445, #252525);
     border-radius: 10px;
     animation: slideFromLeft 1s 0.25s forwards;
