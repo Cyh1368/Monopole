@@ -97,13 +97,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.get('/', function(request, response) {
+app.get('/cyh', function(request, response) {
 	//console.log("Return of auth: ", authLoginToken(request.cookies.clientToken));
 	let authResult;
 	(async () => {
 		authResult = await authLoginToken(request.cookies.clientToken)
 		response = setResponseCookies(response, authResult);
-		response.sendFile(path.join(__dirname + '/home.html'))
+		response.sendFile(path.join(__dirname + '/cyh.html'))
 		//console.log("IIFE log: ", authResult);
 	})()
 
@@ -120,6 +120,15 @@ app.get('/pdfs', function(request, response) {
 		response.sendFile(path.join(__dirname + '/pdfs.html'))
 	})()
 	//console.log("IIFE log: ", authResult);
+});
+
+app.get('/', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/monopel.html'))
+	})()
 });
 
 app.get('/monopel', function(request, response) {
