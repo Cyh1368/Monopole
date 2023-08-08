@@ -8,7 +8,7 @@ function neatDateFormat(utc){
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    console.log(parts);
+    // console.log(parts);
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
@@ -32,7 +32,7 @@ async function fetchQuestionComments(id) {
     // console.log("inside fetchrecentquestions.")
     const response = await fetch("/getQuestionComments?quesid="+id);
     const commentsData = await response.json();
-    console.log(commentsData);
+    // console.log(commentsData);
     return commentsData;
 }
 // console.log("Questions.js speaking, ");
@@ -42,7 +42,7 @@ function sendCommentToServer(){
     var comment = document.getElementById("commentText").value;
     let now = new Date();
 	let time = now.getTime();
-    console.log("comment messege: ", comment);
+    // console.log("comment messege: ", comment);
     let headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -67,6 +67,46 @@ function sendCommentToServer(){
     );
 }
 
+// CHATGPT
+// Add your OpenAI API key here
+const apiKey = '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';
+
+// Get references to DOM elements
+const responseTextDiv = document.getElementById('GPTResponseText');
+const userInputDiv = document.getElementById('main');
+
+// Function to display the response in the specified div
+function displayResponse(response) {
+    responseTextDiv.textContent = response;
+}
+
+// Function to get the user input from the main div and generate a response
+async function generateResponse() {
+    console.log("Generate Response");
+    const userMessage = userInputDiv.textContent;
+    
+    // Send user message to GPT-3 and get the response
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            messages: [{ role: 'user', content: userMessage }],
+            model: 'gpt-3.5-turbo' // Specify the model you want to use
+        })
+    });
+
+    const responseBody = await response.json();
+    console.log(responseBody);
+    const botMessage = responseBody.choices[0].message.content;
+    
+    // Display the response in the designated div
+    displayResponse(botMessage);
+}
+
+
 (async () => {
     var questionID = getCookie("viewQuestionID");
     fetchQuestionResult = await fetchQuestionByID(questionID);
@@ -86,9 +126,15 @@ function sendCommentToServer(){
         </tr>
     `;
 
-    for (let i=0; i<10; i++){
+    console.log("HI");
+    try {
+        await generateResponse(); // Wait for generateResponse to finish
+    } catch (error) {
+        console.error("ChatGPT generateResponse: an error occurred:", error);
+    }
+    for (let i=0; i<min(10, fetchCommentsResult.length); i++){
         item = fetchCommentsResult[i];
-        console.log(item);
+        //console.log(item);
         cmntTable.innerHTML+= `
         <tr>
             <td>` + item.Messege + `</td>
