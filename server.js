@@ -4,11 +4,14 @@ const crypto = require('crypto');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const dotenv = required('dotenv').config();
+
 var localStorage = require('localStorage');
 var cookies = require("cookie-parser");
 // var formidable = require('formidable');
 var fs = require('fs');
 const { log } = require('console');
+const { required } = require('nodemon/lib/config');
 const app = express();
 const authExpire = 2 * 60; // Two minutes for developement stage, in SECONDS
 const cookieLength = 24 * 60 * 60 * 1000; // 24 hr, in milliseconds
@@ -79,8 +82,8 @@ var generate_key = function() {
 };
 
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
+  host: "monople-db.cevtsiwr0pog.us-east-1.rds.amazonaws.com",
+  user: "admin",
   password: databasePassword, 
   database: "monopel"
 });
