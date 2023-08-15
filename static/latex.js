@@ -99,17 +99,34 @@ latexCodeTextarea.addEventListener('drop', e => {
 
 const copyButton = document.getElementById('copyButton');
 copyButton.addEventListener('click', () => {
-    const textToCopy = latexEditor.value;
-    navigator.clipboard.writeText("$$"+textToCopy+"$$")
-    .then(() => {
-        // Success
+    const textToCopy = "$$"+latexEditor.value+"$$";
+    if (navigator.clipboard) {
+        // Use Clipboard API if supported
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                // Success
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy to Clipboard';
+                }, 2000); // Reset button text after 2 seconds
+            })
+            .catch(err => {
+                // Handle error
+                console.error('Failed to copy using Clipboard API: ', err);
+            });
+    } else {
+        // Fallback using execCommand for browsers without Clipboard API
+        const dummyElement = document.createElement('textarea');
+        dummyElement.value = textToCopy;
+        document.body.appendChild(dummyElement);
+        dummyElement.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummyElement);
+        
+        // Provide user feedback
         copyButton.textContent = 'Copied!';
         setTimeout(() => {
             copyButton.textContent = 'Copy to Clipboard';
         }, 2000); // Reset button text after 2 seconds
-    })
-    .catch(err => {
-        // Handle error
-        console.error('Failed to copy: ', err);
-    });
+    }
 });
