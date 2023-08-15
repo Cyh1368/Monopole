@@ -21,6 +21,8 @@ if (result.error) {
     console.error('Error loading .env file:', result.error);
 }
 
+cryptoKey = process.env.CRYPTO_KEY;
+
 async function authLoginToken(token){
 	// Input: login token, both stored in the client cookie and database
 	// Output: Matching user name, null otherwise
