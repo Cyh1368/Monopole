@@ -487,7 +487,15 @@ app.get('/viewQuestion', function(request, response) {
 		})()
 	}
 })
-
+app.get('/latex', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/latex.html'))
+	})()
+	//console.log("IIFE log: ", authResult);
+});
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://localhost:${port}`);
 });
