@@ -127,10 +127,10 @@ nav a {
 }
 
 .drag-region {
-    width: 200px;
+    flex-grow: 1;
     display: inline-block;
     padding: 10px;
-    margin: 20px 0;
+    margin: 20px 3px;
     background-color: #f0f0f0;
 }
 
@@ -140,4 +140,13 @@ nav a {
     margin: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
+    transition: 0.2s linear;
+}
+.latex-block:hover{
+    background-color: #eee;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    /* Adjust other styling as needed */
 }

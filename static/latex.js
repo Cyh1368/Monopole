@@ -1,3 +1,14 @@
+function simulateUnfocus() {
+    const clickEvent = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+  
+    document.dispatchEvent(clickEvent);
+}
+  
+
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -49,10 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add an event listener to the textarea's input event
     textarea.addEventListener("input", updateResult);
-
-    // Add an event listener to the append button
-    initButton.addEventListener("click", function() {init()});
-    clearButton.addEventListener("click", function() {clear()});
 });
 
 const renderedLatex = document.getElementById('latexDisplay');
@@ -80,17 +87,29 @@ latexBlocks.forEach(block => {
   block.addEventListener('dragend', () => {
     isDragging = false; // Reset flag when dragging ends
   });
-    
 });
 
-// // Add event listener to LaTeX display for dropping
-// renderedLatex.addEventListener('dragover', e => {
-//   e.preventDefault();
-// });
+latexCodeTextarea.addEventListener('drop', e => {
+    console.log("drop")
+    // e.preventDefault();
+    const blockData = e.dataTransfer.getData('text/plain');
+    const cursorPosition = latexCodeTextarea.selectionStart;
+    console.log(cursorPosition, latexCodeTextarea.selectionEnd)
+});
 
-// renderedLatex.addEventListener('drop', e => {
-//   e.preventDefault();
-//   const latexText = e.dataTransfer.getData('text/plain');
-//   renderedLatex.innerHTML = `$$ ${latexText} $$`;
-//   latexCodeTextarea.value = latexText;
-// });
+const copyButton = document.getElementById('copyButton');
+copyButton.addEventListener('click', () => {
+    const textToCopy = latexEditor.value;
+    navigator.clipboard.writeText("$$"+textToCopy+"$$")
+    .then(() => {
+        // Success
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => {
+            copyButton.textContent = 'Copy to Clipboard';
+        }, 2000); // Reset button text after 2 seconds
+    })
+    .catch(err => {
+        // Handle error
+        console.error('Failed to copy: ', err);
+    });
+});
