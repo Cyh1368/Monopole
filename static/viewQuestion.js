@@ -68,43 +68,43 @@ function sendCommentToServer(){
 }
 
 // CHATGPT
-// Add your OpenAI API key here
-const apiKey = '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';
+// // Add your OpenAI API key here
+// const apiKey = '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';
 
-// Get references to DOM elements
-const responseTextDiv = document.getElementById('GPTResponseText');
-const userInputDiv = document.getElementById('main');
+// // Get references to DOM elements
+// const responseTextDiv = document.getElementById('GPTResponseText');
+// const userInputDiv = document.getElementById('main');
 
-// Function to display the response in the specified div
-function displayResponse(response) {
-    responseTextDiv.textContent = response;
-}
+// // Function to display the response in the specified div
+// function displayResponse(response) {
+//     responseTextDiv.textContent = response;
+// }
 
-// Function to get the user input from the main div and generate a response
-async function generateResponse() {
-    console.log("Generate Response");
-    const userMessage = userInputDiv.textContent;
+// // Function to get the user input from the main div and generate a response
+// async function generateResponse() {
+//     console.log("Generate Response");
+//     const userMessage = userInputDiv.textContent;
     
-    // Send user message to GPT-3 and get the response
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-            messages: [{ role: 'user', content: userMessage }],
-            model: 'gpt-3.5-turbo' // Specify the model you want to use
-        })
-    });
+//     // Send user message to GPT-3 and get the response
+//     const response = await fetch('https://api.openai.com/v1/chat/completions', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${apiKey}`
+//         },
+//         body: JSON.stringify({
+//             messages: [{ role: 'user', content: userMessage }],
+//             model: 'gpt-3.5-turbo-16k' // Specify the model you want to use
+//         })
+//     });
 
-    const responseBody = await response.json();
-    console.log(responseBody);
-    const botMessage = responseBody.choices[0].message.content;
+//     const responseBody = await response.json();
+//     console.log(responseBody);
+//     const botMessage = responseBody.choices[0].message.content;
     
-    // Display the response in the designated div
-    displayResponse(botMessage);
-}
+//     // Display the response in the designated div
+//     displayResponse(botMessage);
+// }
 
 
 (async () => {
@@ -126,13 +126,13 @@ async function generateResponse() {
         </tr>
     `;
 
-    console.log("HI");
-    try {
-        await generateResponse(); // Wait for generateResponse to finish
-    } catch (error) {
-        console.error("ChatGPT generateResponse: an error occurred:", error);
-    }
-    for (let i=0; i<min(10, fetchCommentsResult.length); i++){
+    // console.log("HI");
+    // try {
+    //     await generateResponse(); // Wait for generateResponse to finish
+    // } catch (error) {
+    //     console.error("ChatGPT generateResponse: an error occurred:", error);
+    // }
+    for (let i=0; i<Math.min(10, fetchCommentsResult.length); i++){
         item = fetchCommentsResult[i];
         //console.log(item);
         cmntTable.innerHTML+= `

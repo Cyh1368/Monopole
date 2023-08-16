@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>LaTeX Editor</title>
+        <link href="latex.css" rel="stylesheet" type="text/css">
+        <link href="global.css" rel="stylesheet" type="text/css">
+        <!-- <script src="mathjaxImport.js"></script> -->
+        
+        <nav id="navbar">
+            <ul class="menu">
+                <h2 id="nav-title"><a href="/">Monopel</a></h2>
+                <li class="item"><a href="/cyh">CYH</a></li>
+                <li class="item"><a href="/questions">Questions</a></li>
+                <li class="item" id="joinus"><a href="/monopelJoin">Join Us</a></li>
+                <li class="item"><a href="/monopelAsk">Ask</a></li>
+                <li class="item"><a href="/monopelLogin">Login / Signup</a></li>
+                <li class="item" id="userStatus">Logged Out</li>
+            </ul>
+        </nav>
+	</head>
+	<body>
+        <div class="bodyMessege">
+        <h1>Make LaTeX Here!</h1>
+            <textarea class="full-width-textarea" id="latexEditor" placeholder="LaTeX Code will show up here! Paste them to your post."></textarea>
+            <div id="latexDisplay">
+                Drag / type to display...
+            </div>
+            <button id="copyButton">Copy to Clipboard</button>
+            <div class="flex-container">
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \frac{  }{  } ">$\frac{a}{b}$</div>
+                    <div class="latex-block" draggable="true" data-value=" x^2 ">$x^2$</div>
+                    <div class="latex-block" draggable="true" data-value=" x^3 ">$x^3$</div>
+                    <div class="latex-block" draggable="true" data-value=" x^{  } ">$x^n$</div>
+                    <div class="latex-block" draggable="true" data-value=" \textbf{Bold} ">$ \textbf{Bold} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \textit{Italic} ">$ \textit{Italic} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \vec{v} ">$ \vec{v} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \mathbb{R} ">$ \mathbb{R} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \mathbb{N} ">$ \mathbb{N} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \triangle ">$ \triangle $</div>
+                    <div class="latex-block" draggable="true" data-value=" \in ">$ \in $</div>
+                </div>
+            
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \Gamma ">$ \Gamma $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Delta ">$ \Delta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Theta ">$ \Theta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Lambda ">$ \Lambda $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Xi ">$ \Xi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Pi ">$ \Pi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Sigma ">$ \Sigma $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Upsilon ">$ \Upsilon $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Phi ">$ \Phi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Psi ">$ \Psi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \Omega ">$ \Omega $</div>
+                </div>
+
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \alpha ">$ \alpha $</div>
+                    <div class="latex-block" draggable="true" data-value=" \beta ">$ \beta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \gamma ">$ \gamma $</div>
+                    <div class="latex-block" draggable="true" data-value=" \delta ">$ \delta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \epsilon ">$ \epsilon $</div>
+                    <div class="latex-block" draggable="true" data-value=" \zeta ">$ \zeta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \eta ">$ \eta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \theta ">$ \theta $</div>
+                    <div class="latex-block" draggable="true" data-value=" \iota ">$ \iota $</div>
+                    <div class="latex-block" draggable="true" data-value=" \kappa ">$ \kappa $</div>
+                    <div class="latex-block" draggable="true" data-value=" \lambda ">$ \lambda $</div>
+                    <div class="latex-block" draggable="true" data-value=" \mu ">$ \mu $</div>
+                </div>
+                
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \nu ">$ \nu $</div>
+                    <div class="latex-block" draggable="true" data-value=" \xi ">$ \xi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \omicron ">$ \omicron $</div>
+                    <div class="latex-block" draggable="true" data-value=" \pi ">$ \pi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \rho ">$ \rho $</div>
+                    <div class="latex-block" draggable="true" data-value=" \sigma ">$ \sigma $</div>
+                    <div class="latex-block" draggable="true" data-value=" \tau ">$ \tau $</div>
+                    <div class="latex-block" draggable="true" data-value=" \upsilon ">$ \upsilon $</div>
+                    <div class="latex-block" draggable="true" data-value=" \phi ">$ \phi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \chi ">$ \chi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \psi ">$ \psi $</div>
+                    <div class="latex-block" draggable="true" data-value=" \omega ">$ \omega $</div>
+                </div>
+                
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \equiv ">$ \equiv $</div>
+                    <div class="latex-block" draggable="true" data-value=" \cong ">$ \cong $</div>
+                    <div class="latex-block" draggable="true" data-value=" \times ">$ \times $</div>
+                    <div class="latex-block" draggable="true" data-value=" \cdot ">$ \cdot $</div>
+                    <div class="latex-block" draggable="true" data-value=" \sin{  } ">$ \sin $</div>
+                    <div class="latex-block" draggable="true" data-value=" \cos{  } ">$ \cos $</div>
+                    <div class="latex-block" draggable="true" data-value=" \tan{  } ">$ \tan $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arcsinh{  } ">$ \sec $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arccosh{  } ">$ \csc $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arctanh{  } ">$ \cot $</div>
+                </div>
+
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" e^{  } ">$ e^{x} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \ln{  } ">$ \ln $</div>
+                    <div class="latex-block" draggable="true" data-value=" \frac{\text{d}}{{\text{dx}}} ">$ \frac{\text{d}}{{dx}} $</div>
+                    <div class="latex-block" draggable="true" data-value=" f(x) = {  } ">$ f(x) = $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arcsin{  } ">$ \arcsin $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arccos{  } ">$ \arccos $</div>
+                    <div class="latex-block" draggable="true" data-value=" \arctan{  } ">$ \arctan $</div>
+                    <div class="latex-block" draggable="true" data-value=" \sinh{  } ">$ \sinh $</div>
+                    <div class="latex-block" draggable="true" data-value=" \cosh{  } ">$ \cosh $</div>
+                    <div class="latex-block" draggable="true" data-value=" \tanh{  } ">$ \tanh $</div>
+                </div>
+
+                <div class="drag-region">
+                    <div class="latex-block" draggable="true" data-value=" \text{for all} ">$ \text{for all} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \text{such that} ">$ \text{such that} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \int_{  }^{  } x \, \text{dx} ">$ \int_{a}^{b} x \, dx $</div>
+                    <div class="latex-block" draggable="true" data-value=" \int {  } \, \text{dx} ">$ \int x \, dx $</div>
+                    <div class="latex-block" draggable="true" data-value=" \oint_{\mathbb{L}} ">$ \oint_{\mathbb{L}} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \oint_{\mathbb{S}} ">$ \oint_{\mathbb{S}} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \oint_{\mathbb{V}} ">$ \oint_{\mathbb{V}} $</div>
+                    <div class="latex-block" draggable="true" data-value=" \iint ">$ \iint $</div>
+                    <div class="latex-block" draggable="true" data-value=" \iiint ">$ \iiint $</div>
+                    <div class="latex-block" draggable="true" data-value=" \, dl ">$ \, dl $</div>
+                    <div class="latex-block" draggable="true" data-value=" \, dS ">$ \, dS $</div>
+                    <div class="latex-block" draggable="true" data-value=" \, dV ">$ \, dV $</div>
+
+
+                </div>
+                
+                
+            </div>
+            
+        </div>
+
+    <script src="latex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+	</body>
+</html>

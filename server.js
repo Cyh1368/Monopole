@@ -4,9 +4,6 @@ const crypto = require('crypto');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-const dotenv = required('dotenv').config();
-
-var localStorage = require('localStorage');
 var cookies = require("cookie-parser");
 // var formidable = require('formidable');
 var fs = require('fs');
@@ -15,12 +12,16 @@ const { required } = require('nodemon/lib/config');
 const app = express();
 const authExpire = 2 * 60; // Two minutes for developement stage, in SECONDS
 const cookieLength = 24 * 60 * 60 * 1000; // 24 hr, in milliseconds
-const cryptoKey = "kA94fp@ki/2[]`jr-=`]"; // Should be kept secret in some way
-
 const questionCategories = ["me", "em", "th", "ap", "sr", "gr", "mo"];
 const port=3000;
 const hostname = '0.0.0.0'; // Bind to all available network interfaces
-const databasePassword = "Ch122iv0Console.log"; // Change this in server. In case you're a hacker, this is not the server password. Quit intercepting it on Github.
+const dotenv = require('dotenv');
+const result = dotenv.config({ path: path.resolve(__dirname, '.env') });
+if (result.error) {
+    console.error('Error loading .env file:', result.error);
+}
+
+cryptoKey = process.env.CRYPTO_KEY;
 
 async function authLoginToken(token){
 	// Input: login token, both stored in the client cookie and database
@@ -82,10 +83,10 @@ var generate_key = function() {
 };
 
 var connection = mysql.createConnection({
-  host: "monople-db.cevtsiwr0pog.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: databasePassword, 
-  database: "monopel"
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD, 
+	database: process.env.DB_NAME
 });
 
 app.use(session({
@@ -488,7 +489,15 @@ app.get('/viewQuestion', function(request, response) {
 		})()
 	}
 })
-
+app.get('/latex', function(request, response) {
+	let authResult;
+	(async () => {
+		authResult = await authLoginToken(request.cookies.clientToken)
+		response = setResponseCookies(response, authResult);
+		response.sendFile(path.join(__dirname + '/latex.html'))
+	})()
+	//console.log("IIFE log: ", authResult);
+});
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://localhost:${port}`);
 });
