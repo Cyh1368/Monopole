@@ -1,14 +1,14 @@
 {
-  "name": "cheng-you",
+  "name": "monopel",
   "version": "1.0.0",
-  "description": "A web server for the blog of Cheng-You Ho, as well as a platform for monopel.",
+  "description": "The web server Monopel.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "author": "Cheng-You Ho",
+  "author": "Monopel",
   "license": "ISC",
   "dependencies": {
     "console": "^0.7.2",
