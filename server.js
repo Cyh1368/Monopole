@@ -498,6 +498,32 @@ app.get('/latex', function(request, response) {
 	})()
 	//console.log("IIFE log: ", authResult);
 });
+
+// Below are still in testing
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public')); // Make sure your frontend files are in a 'public' directory
+
+app.get('/webcrawlview', function(request, response) {
+    response.sendFile(path.join(__dirname + '/webcrawl.html'))
+});
+
+app.post('/webcrawl', (req, res) => {
+  const query = req.body.query;
+
+  exec(`python webCrawl.py ${query}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error}`);
+      return res.status(500).send('Internal Server Error');
+    }
+    const result = stdout.toString();
+    res.send(result);
+  });
+});
+// In testing section ended
+
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://localhost:${port}`);
 });
