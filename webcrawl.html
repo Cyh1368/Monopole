@@ -1,18 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="webcrawl.css" rel="stylesheet" type="text/css">
-  <title>Document</title>
-</head>
-<body>
-    <h1>Web Crawler</h1>
-  <input type="text" id="queryInput" placeholder="Enter your query">
-  <button id="searchButton">Search</button>
-  <div id="resultDisplay"></div>
-  <script src="webcrawl.js"></script>
-  
-</body>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>View Question</title>
+        <link href="webcrawl.css" rel="stylesheet" type="text/css">
+        <link href="global.css" rel="stylesheet" type="text/css">       
+
+        <nav id="navbar">
+            <ul class="menu">
+                <h2 id="nav-title"><a href="/">Monopel</a></h2>
+                <li class="item"><a href="/cyh">CYH</a></li>
+                <li class="item"><a href="/questions">Questions</a></li>
+                <li class="item" id="joinus"><a href="/monopelJoin">Join Us</a></li>
+                <li class="item"><a href="/monopelAsk">Ask</a></li>
+                <li class="item"><a href="/monopelLogin">Login / Signup</a></li>
+                <li class="item" id="userStatus">Logged Out</li>
+            </ul>
+        </nav>
+    </head>
+
+    <body>
+        <div class="bodyMessege">
+          <h1>Stack Exchange Crawler</h1>
+          <div class="sendQuery">
+            <input type="text" id="queryInput" placeholder="Enter your query">
+            <button id="searchButton">Search</button>  
+          </div>
+          <div id="resultDisplay">
+            <a href="https://ru.meta.stackoverflow.com/questions/7741/%d0%a1%d0%b8%d0%bd%d0%be%d0%bd%d0%b8%d0%bc%d1%8b-%d0%bc%d0%b5%d1%82%d0%ba%d0%b8-%d1%8e%d0%bd%d0%b8%d1%82-%d1%82%d0%b5%d1%81%d1%82%d1%8b-test-%d0%b8-testing">Синонимы метки [юнит-тесты], [test] и [testing]</a>
+            <a href="https://ru.meta.stackoverflow.com/questions/7741/%d0%a1%d0%b8%d0%bd%d0%be%d0%bd%d0%b8%d0%bc%d1%8b-%d0%bc%d0%b5%d1%82%d0%ba%d0%b8-%d1%8e%d0%bd%d0%b8%d1%82-%d1%82%d0%b5%d1%81%d1%82%d1%8b-test-%d0%b8-testing">Синонимы метки [юнит-тесты], [test] и [testing]</a>
+            <a href="https://ru.meta.stackoverflow.com/questions/7741/%d0%a1%d0%b8%d0%bd%d0%be%d0%bd%d0%b8%d0%bc%d1%8b-%d0%bc%d0%b5%d1%82%d0%ba%d0%b8-%d1%8e%d0%bd%d0%b8%d1%82-%d1%82%d0%b5%d1%81%d1%82%d1%8b-test-%d0%b8-testing">Синонимы метки [юнит-тесты], [test] и [testing]</a>
+            <a href="https://ru.meta.stackoverflow.com/questions/7741/%d0%a1%d0%b8%d0%bd%d0%be%d0%bd%d0%b8%d0%bc%d1%8b-%d0%bc%d0%b5%d1%82%d0%ba%d0%b8-%d1%8e%d0%bd%d0%b8%d1%82-%d1%82%d0%b5%d1%81%d1%82%d1%8b-test-%d0%b8-testing">Синонимы метки [юнит-тесты], [test] и [testing]</a>
+          </div>
+          <script src="webcrawl.js"></script>
+      
+        </div>
+        
+        <script src="webcrawl.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+    </body>
 </html>
