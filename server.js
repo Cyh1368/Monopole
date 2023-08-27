@@ -513,7 +513,7 @@ app.get('/webcrawlview', function(request, response) {
 app.post('/webcrawl', (req, res) => {
   const query = req.body.query;
 
-  exec(`python webCrawl.py ${query}`, (error, stdout, stderr) => {
+  exec(`python webCrawl.py "${query}"`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error: ${error}`);
       return res.status(500).send('Internal Server Error');
