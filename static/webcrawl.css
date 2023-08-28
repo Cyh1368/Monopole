@@ -1,3 +1,193 @@
-html{
-    background: #f1f1f1;
+body {
+    background-color: #272727;
+    margin: 10px;
+}
+h1 {
+    font-size: 40px;
+    font-family: Georgia, serif;
+    text-align: center;
+    display: block;
+    font-weight: 100;
+    color: white;
+}
+h2 {
+    font-size: 30px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    color: white;
+}
+h3 {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    color: #40a8f7;
+}
+
+
+nav {
+    position: relative;
+    background: #272727;
+    padding: 0 15px;
+    border-bottom: 1px solid #e3e3e3;
+    margin: 0;
+}
+ul{
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#userStatus{
+    color: #40a8f7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+li#joinus{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 0 10px;
+}
+li#joinus:hover{
+    border: 1px solid #e3e3e3;
+}
+nav a {
+    color: white;
+}
+
+.bodyMessege a{
+    color: #40a8f7;
+    padding: 10px;
+}
+
+.bodyMessege a:hover{
+    background-color: #333;
+}
+
+.menu{   
+    list-style-type: none;
+}
+
+.item {
+    display: inline-block;
+    padding: 0 20px;
+}
+.item.button {
+    padding: 9px 5px;
+}
+.item:not(.button) a:hover,
+.item a:hover::after {
+    color: #ccc;
+}
+
+/* Desktop menu */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#nav-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.bodyMessege{
+    padding: 20px 20px;
+    height: 100%;
+    margin: 20px 0;
+}
+
+.sendQuery {
+    width: 90%;
+    background-color: #333;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+    margin: auto;
+    padding: 20px;
+    transition: 0.2s linear;
+}
+
+#resultDisplay{
+    width: 90%;
+    background-color: #333;
+    margin: 200px 0;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5);
+    margin: auto;
+    padding: 20px;
+}
+
+#resultDisplay:hover{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);    
+}
+
+#resultDisplay a{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    background: #222;
+    margin: 5px;
+    color: #5696f5;
+    display: inline-block;
+    border: 1px solid #555;
+    transition: 0.2s;
+}
+#resultDisplay h2{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+#resultDisplay a:hover{
+    background: #444;
+
+}
+
+.sendQuery:hover{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.sendQuery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding-top: 20px;
+}
+
+.sendQuery input[type="text"] {
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin: auto;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.sendQuery button {
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+.sendQuery input:focus{
+    outline: none;
+    background: #e3e3e3;
+}
+
+.sendQuery input[type="submit"]:hover {
+    background-color: #2868c7;
+    transition: background-color 0.2s;
 }

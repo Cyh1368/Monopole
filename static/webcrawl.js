@@ -1,3 +1,10 @@
+function truncateString(str) {
+  if (str.length > 50) {
+      return str.substring(0, 50) + "...";
+  } else {
+      return str;
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
   const queryInput = document.getElementById('queryInput');
   const searchButton = document.getElementById('searchButton');
@@ -5,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   searchButton.addEventListener('click', () => {
     const query = queryInput.value;
-    resultDisplay.innerHTML = "Loading content..."
+    resultDisplay.innerHTML = "<h2>Loading content...</h2>"
     if (query) {
       fetch('/webcrawl', {
         method: 'POST',
@@ -21,15 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
           for (var key in jsonResult) {
               if (jsonResult.hasOwnProperty(key)) {
                   var element = jsonResult[key];
-                  
-                  var h1 = document.createElement("h1");
-                  h1.textContent = key;
-                  
+
                   var link = document.createElement("a");
                   link.href = element.url;
-                  link.textContent = element.url;
+                  link.textContent = truncateString(key);
                   
-                  resultDisplay.appendChild(h1);
                   resultDisplay.appendChild(link);
               }
           }
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
           console.error('Error:', error);
-          resultDisplay.innerHTML = 'An error occurred.';
+          resultDisplay.innerHTML = '<h2>An error occurred.</h2>';
         });
     }
   });
