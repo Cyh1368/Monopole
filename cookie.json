@@ -109,7 +109,7 @@
         "httpOnly": true,
         "name": "acct",
         "path": "/",
-        "sameSite": "Lax",
+        "sameSite": "null",
         "secure": true,
         "session": false,
         "storeId": null,
