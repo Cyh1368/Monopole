@@ -21,3 +21,100 @@ html {
 html::-webkit-scrollbar {
     display: none; /* Hide the default scrollbar on webkit browsers */
 }
+body {
+    background-color: #272727;
+    margin: 10px;
+}
+h1 {
+    font-size: 40px;
+    font-family: Georgia, serif;
+    text-align: center;
+    display: block;
+    font-weight: 100;
+    color: white;
+}
+h2 {
+    font-size: 30px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    color: white;
+}
+h3 {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    color: #40a8f7;
+}
+
+
+nav {
+    position: relative;
+    background: #272727;
+    padding: 0 15px;
+    border-bottom: 1px solid #e3e3e3;
+    margin: 0;
+}
+
+nav a {
+    color: white;
+}
+
+ul{
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#userStatus{
+    color: #40a8f7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+li#joinus{
+    border: 1px solid white;
+    padding: 10px;
+    margin: 0 10px;
+}
+li#joinus:hover{
+    border: 1px solid #e3e3e3;
+}
+.menu{   
+    list-style-type: none;
+}
+
+.item {
+    display: inline-block;
+    padding: 0 20px;
+}
+.item.button {
+    padding: 9px 5px;
+}
+
+.item a{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.item:not(.button) a:hover,
+.item a:hover::after {
+    color: #ccc;
+}
+
+/* Desktop menu */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#nav-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: auto;
+    font-size: 1.5em;
+    font-weight: 300;
+}
